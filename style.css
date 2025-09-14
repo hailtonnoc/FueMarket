@@ -1,0 +1,70 @@
+body {
+    font-family: sans-serif;
+    background: #f0f0f0;
+    margin: 0;
+}
+
+#carousel-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 0;
+}
+
+.carousel-wrapper {
+    width: 90%;
+    max-width: 1000px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.carousel-container {
+    display: flex;
+    /* Duplicate items for seamless loop, so width is for 12 items */
+    width: calc(300px * 12); 
+    position: relative;
+}
+
+.carousel-container.moving-left {
+    animation: scrollLeft 30s linear infinite;
+}
+
+.carousel-container.moving-right {
+    animation: scrollRight 30s linear infinite;
+}
+
+
+.carousel-item {
+    width: 300px;
+    flex-shrink: 0;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.carousel-item img {
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+}
+
+@keyframes scrollLeft {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        /* Move by the width of the original 6 items */
+        transform: translateX(calc(-300px * 6));
+    }
+}
+
+@keyframes scrollRight {
+    0% {
+        /* Start from the end of the original items */
+        transform: translateX(calc(-300px * 6));
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
