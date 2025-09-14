@@ -11,40 +11,78 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     let currentDirection = 'left';
+    let hoveredSide = 'none';
+
+    // Start with default left movement
     carouselContainer.classList.add('moving-left');
 
-    const changeDirection = (newDirection) => {
-        if (newDirection !== currentDirection) {
-            carouselContainer.classList.remove(`moving-${currentDirection}`);
-            carouselContainer.classList.add(`moving-${newDirection}`);
-            currentDirection = newDirection;
-        }
-    };
+    function changeDirection(side) {
+        if (side === hoveredSide) return;
+        hoveredSide = side;
 
-    carouselWrapper.addEventListener('mousemove', (e) => {
-        const hoverArea = carouselWrapper.offsetWidth / 2;
-        if (e.offsetX < hoverArea) {
-            changeDirection('right');
-        } else {
-            changeDirection('left');
-        }
+        // Get current transform state
+        const style = window.getComputedStyle(carouselContainer);
+        const currentTransform = style.transform;
+
+        // Pause current animation
+        carouselContainer.style.animation = 'none';
+        carouselContainer.style.transform = currentTransform;
+
+        // Force reflow
+        void carouselContainer.offsetWidth;
+
+        // Remove previous animation class
+        carouselContainer.classList.remove('moving-left', 'moving-right');
+
+        // Add new animation class based on hover side
+        const newDirection = side === 'left' ? 'left' : 'right';
+        carouselContainer.classList.add(`moving-${newDirection}`);
+        currentDirection = newDirection;
+
+        // Clear animation override
+        carouselContainer.style.animation = '';
+    }
+
+    // Add hover detection zones
+    const leftZone = document.createElement('div');
+    const rightZone = document.createElement('div');
+
+    Object.assign(leftZone.style, {
+        position: 'absolute',
+        left: '0',
+        top: '0',
+        width: '50%',
+        height: '100%',
+        zIndex: '1'
     });
 
-    carouselWrapper.addEventListener('click', (e) => {
-        const clickArea = carouselWrapper.offsetWidth / 2;
-        if (e.offsetX < clickArea) {
-            changeDirection('right');
-        } else {
-            changeDirection('left');
-        }
+    Object.assign(rightZone.style, {
+        position: 'absolute',
+        right: '0',
+        top: '0',
+        width: '50%',
+        height: '100%',
+        zIndex: '1'
     });
 
-    // Pause animation on hover
+    carouselWrapper.appendChild(leftZone);
+    carouselWrapper.appendChild(rightZone);
+
+    // Event listeners for zones
+    leftZone.addEventListener('mouseenter', () => changeDirection('right'));
+    rightZone.addEventListener('mouseenter', () => changeDirection('left'));
+
+    // Reset on mouse leave
+    carouselWrapper.addEventListener('mouseleave', () => {
+        hoveredSide = 'none';
+        changeDirection(currentDirection);
+    });
+
+    // Pause/Resume on hover
     carouselWrapper.addEventListener('mouseenter', () => {
         carouselContainer.style.animationPlayState = 'paused';
     });
 
-    // Resume animation on mouse leave
     carouselWrapper.addEventListener('mouseleave', () => {
         carouselContainer.style.animationPlayState = 'running';
     });
