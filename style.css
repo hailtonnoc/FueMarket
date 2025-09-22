@@ -1,113 +1,128 @@
-body {
-    font-family: sans-serif;
-    background: #f0f0f0;
+/* style.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Variáveis de Cores para fácil manutenção */
+:root {
+    --primary-orange: #FF7700;
+    --secondary-orange: #ff77009f;
+    --burned-yellow: #FFA705;
+    --dark-blue: #0A1128;
+    --creme: #FEC286;
+    --dark-grey: #4D4B4B;
+    --white: #FFFFFF;
+    --black: #000000;
+    --purple: #87078E;
+    --purple-pastel: #8873FF; 
+    --green: #BCD918; 
+}
+
+/* Reset Básico e Fontes */
+* {
     margin: 0;
-}
-
-#carousel-section {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 30px 0;
-}
-
-.carousel-wrapper {
-    width: 90%;
-    max-width: 1000px;
-    overflow: hidden;
-    position: relative;
-    border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-
-.carousel-container {
-    display: flex;
-    /* Duplicate items for seamless loop, so width is for 12 items */
-    width: calc(300px * 12); 
-    position: relative;
-}
-
-.carousel-container.moving-left {
-    animation: scrollLeft 30s linear infinite;
-}
-
-.carousel-container.moving-right {
-    animation: scrollRight 30s linear infinite;
-}
-
-
-.carousel-item {
-    width: 300px;
-    flex-shrink: 0;
-    padding: 15px;
+    padding: 0;
     box-sizing: border-box;
+    font-family: 'libre franklin', 'inter', 'Lato', sans-serif; 
+    font-weight: 400;
 }
 
-.carousel-item img {
-    width: 100%;
-    border-radius: 10px;
-    display: block;
+body {
+    line-height: 1.6;
+    color: var(--dark-grey);
+    background-color: var(--white);
+    overflow-x: hidden; /* Evita scroll horizontal */
 }
 
-@keyframes scrollLeft {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        /* Move by the width of the original 6 items */
-        transform: translateX(calc(-300px * 6));
-    }
-}
-
-@keyframes scrollRight {
-    0% {
-        /* Start from the end of the original items */
-        transform: translateX(calc(-300px * 6));
-    }
-    100% {
-        transform: translateX(0);
-    }
-}
-
+/* Cabeçalho e Navegação */
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 40px;
-    background: #fff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-header h1 {
-    margin: 0;
-    font-size: 1.5em;
+    padding: 15px 0;
+    position: relative; /* Para posicionar a forma roxa no canto */
+    width: 100%;
 }
 
 .menu {
-    order: 2; /* This will move the menu to the right */
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-end; /* Alinha o menu à direita como na imagem */
+    align-items: center;
+    padding: 0 20px;
 }
 
 .menu-list {
     list-style: none;
-    margin: 0;
-    padding: 0;
     display: flex;
-}
-
-.menu-list li {
-    margin-left: 20px;
+    gap: 30px;
 }
 
 .menu-list a {
     text-decoration: none;
-    color: #333;
+    color: var(--black);
     font-weight: bold;
-    padding: 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s, color 0.3s;
+    font-size: 1rem;
+    padding: 5px 0;
+    transition: color 0.3s ease;
 }
 
 .menu-list a:hover {
-    background-color: #f0f0f0;
-    color: #000;
+    color: var(--primary-orange);
+}
+
+/* Título Principal */
+h1 {
+    font-size: 2.5rem;
+    color: #BD5902; /* Cor base do texto principal */
+    text-align: center;
+    margin: 80px auto 40px auto; /* Espaçamento ajustado */
+    max-width: 800px;
+    line-height: 1.2;
+    padding: 0 20px;
+}
+
+/* Carousel Section */
+#carousel-section {
+    margin-top: 50px;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 500px; /* Altura para acomodar o carrossel 3D */
+}
+
+.carousel-wrapper {
+    perspective: 1500px; /* Define a profundidade da cena 3D */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-container {
+    position: relative;
+    width: 200px; /* Largura de um item, para referência */
+    height: 200px; /* Altura de um item, para referência */
+    transform-style: preserve-3d;
+    transition: transform 0.5s; /* Para suavizar a rotação manual */
+}
+
+.carousel-container.dragging {
+    cursor: grabbing;
+}
+
+.carousel-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Oculta o lado de trás dos itens */
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }

@@ -1,89 +1,106 @@
 document.addEventListener('DOMContentLoaded', () => {
     const carouselContainer = document.querySelector('.carousel-container');
-    const carouselWrapper = document.querySelector('.carousel-wrapper');
-    const items = document.querySelectorAll('.carousel-item');
-    const totalItems = items.length;
+    const carouselItems = document.querySelectorAll('.carousel-item');
+    const numItems = carouselItems.length;
+    const angleStep = 360 / numItems; // Ângulo entre cada item
+    const radius = 300; // Raio do círculo em pixels (ajuste conforme necessário)
+    let currentRotationY = 0; // Rotação Y atual do carrossel principal
 
-    // Clone items for seamless looping
-    for (let i = 0; i < totalItems; i++) {
-        const clone = items[i].cloneNode(true);
-        carouselContainer.appendChild(clone);
+    let isDragging = false;
+    let startX;
+    let startRotationY; // Para armazenar a rotação inicial quando o arrasto começar
+
+    // Função para posicionar os itens ao longo do círculo
+    function positionItems() {
+        carouselItems.forEach((item, index) => {
+            const itemAngle = index * angleStep; // Ângulo para este item
+
+            // A rotação posiciona o item no ângulo correto no círculo,
+            // e a translação o empurra para fora, criando o raio.
+            item.style.transform = `
+                rotateY(${itemAngle}deg)
+                translateZ(${radius}px)
+            `;
+            // Definir o transform-origin para o centro para rotações futuras
+            item.style.transformOrigin = '50% 50%';
+        });
     }
 
-    let currentDirection = 'left';
-    let hoveredSide = 'none';
+    // Aplica as posições iniciais dos itens
+    positionItems();
 
-    // Start with default left movement
-    carouselContainer.classList.add('moving-left');
-
-    function changeDirection(side) {
-        if (side === hoveredSide) return;
-        hoveredSide = side;
-
-        // Get current transform state
-        const style = window.getComputedStyle(carouselContainer);
-        const currentTransform = style.transform;
-
-        // Pause current animation
-        carouselContainer.style.animation = 'none';
-        carouselContainer.style.transform = currentTransform;
-
-        // Force reflow
-        void carouselContainer.offsetWidth;
-
-        // Remove previous animation class
-        carouselContainer.classList.remove('moving-left', 'moving-right');
-
-        // Add new animation class based on hover side
-        const newDirection = side === 'left' ? 'left' : 'right';
-        carouselContainer.classList.add(`moving-${newDirection}`);
-        currentDirection = newDirection;
-
-        // Clear animation override
-        carouselContainer.style.animation = '';
+    // Aplica a rotação atual ao contêiner principal do carrossel
+    function applyContainerRotation() {
+        carouselContainer.style.transform = `rotateY(${currentRotationY}deg)`;
     }
 
-    // Add hover detection zones
-    const leftZone = document.createElement('div');
-    const rightZone = document.createElement('div');
+    // --- Comportamento de rotação automática ---
+    let autoRotateInterval;
+    const startAutoRotate = () => {
+        stopAutoRotate(); // Garante que não haja múltiplos intervalos rodando
+        autoRotateInterval = setInterval(() => {
+            currentRotationY -= 0.2; // Velocidade da rotação automática (ajuste conforme desejar)
+            applyContainerRotation();
+        }, 10); // A cada 10ms
+    };
 
-    Object.assign(leftZone.style, {
-        position: 'absolute',
-        left: '0',
-        top: '0',
-        width: '50%',
-        height: '100%',
-        zIndex: '1'
+    const stopAutoRotate = () => {
+        clearInterval(autoRotateInterval);
+    };
+
+    // Inicia a rotação automática ao carregar
+    startAutoRotate();
+
+    // --- Interação com o mouse para controle manual ---
+    carouselContainer.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        startX = e.clientX;
+        startRotationY = currentRotationY; // Salva a rotação atual do carrossel
+        carouselContainer.classList.add('dragging');
+        stopAutoRotate(); // Para a rotação automática ao arrastar
+        e.preventDefault(); // Previne o comportamento padrão do arrastar de imagem/texto
     });
 
-    Object.assign(rightZone.style, {
-        position: 'absolute',
-        right: '0',
-        top: '0',
-        width: '50%',
-        height: '100%',
-        zIndex: '1'
+    // Usa 'document' para pegar o mouseup e mouseleave mesmo se o mouse sair do carrossel
+    document.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        const deltaX = e.clientX - startX;
+        // Calcula a nova rotação baseada no movimento do mouse
+        currentRotationY = startRotationY + (deltaX * 0.5); // Ajuste a sensibilidade aqui
+        applyContainerRotation();
     });
 
-    carouselWrapper.appendChild(leftZone);
-    carouselWrapper.appendChild(rightZone);
-
-    // Event listeners for zones
-    leftZone.addEventListener('mouseenter', () => changeDirection('right'));
-    rightZone.addEventListener('mouseenter', () => changeDirection('left'));
-
-    // Reset on mouse leave
-    carouselWrapper.addEventListener('mouseleave', () => {
-        hoveredSide = 'none';
-        changeDirection(currentDirection);
+    document.addEventListener('mouseup', () => {
+        if (isDragging) {
+            isDragging = false;
+            carouselContainer.classList.remove('dragging');
+            startAutoRotate(); // Retoma a rotação automática ao soltar
+        }
     });
 
-    // Pause/Resume on hover
-    carouselWrapper.addEventListener('mouseenter', () => {
-        carouselContainer.style.animationPlayState = 'paused';
+    // Se o mouse sair do corpo da página enquanto arrasta, também parar o arrasto
+    document.addEventListener('mouseleave', () => {
+        if (isDragging) {
+            isDragging = false;
+            carouselContainer.classList.remove('dragging');
+            startAutoRotate();
+        }
     });
 
-    carouselWrapper.addEventListener('mouseleave', () => {
-        carouselContainer.style.animationPlayState = 'running';
+    // --- Scroll suave para links de navegação ---
+    document.querySelectorAll('.menu-list a').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            // Se for o link para '#cases', rolar para '#carousel-section'
+            const targetElement = (targetId === '#cases') ? document.querySelector('#carousel-section') : document.querySelector(targetId);
+
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
     });
+
 });
