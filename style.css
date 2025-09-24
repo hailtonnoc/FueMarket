@@ -8,13 +8,14 @@
     --secondary-orange: #ff77009f;
     --burned-yellow: #FFA705;
     --dark-blue: #0A1128;
+    --bluh2: #145A75;
     --creme: #FEC286;
     --dark-grey: #4D4B4B;
     --white: #FFFFFF;
     --black: #000000;
     --purple: #87078E;
     --purple-pastel: #8873FF; 
-    --green: #BCD918; 
+    --green: #BCD918;
 }
 
 /* Reset Básico e Fontes */
@@ -79,6 +80,13 @@ h1 {
     padding: 0 20px;
 }
 
+h2 {
+    font-size: 2rem;
+    color: var(--bluh2);
+    text-align: center;
+    margin: 1%;
+}
+
 /* Carousel Section */
 #carousel-section {
     margin-top: 50px;
@@ -125,4 +133,53 @@ h1 {
     object-fit: cover;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+
+/* _________________________________________________*/
+
+.qstFraco{
+    display: inline;
+    background-color: #ff770095;
+    border-radius: 6px;
+    padding: 5px;
+    font-size: 140%;
+}
+
+#suaPersonalidade{
+    text-align: center;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+#suaPersonalidade p{
+    font-size: 1.2rem;
+    text-align: center;
+    margin-left: 4%;
+    margin-right: 4%;
+}
+
+#elementos{
+    text-align: center;
+        margin-top: 3%;
+        margin-bottom: 6%;
+}
+
+#elementos > p{
+    display: inline;
+    color: var(--primary-orange);
+    margin: 3%;
+    font-size: 120%;
+}
+
+/*________________________________________________*/
+button{
+    cursor: pointer;
+    background-color: var(--secondary-orange);
+    color: var(--black);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 120%;
+    font-weight: 500;
 }
