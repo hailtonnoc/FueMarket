@@ -25,6 +25,7 @@
     box-sizing: border-box;
     font-family: 'libre franklin', 'inter', 'Lato', sans-serif; 
     font-weight: 400;
+    text-align: center;
 }
 
 body {
@@ -32,6 +33,7 @@ body {
     color: var(--dark-grey);
     background-color: var(--white);
     overflow-x: hidden; /* Evita scroll horizontal */
+    font-size: 1.1rem;
 }
 
 /* Cabeçalho e Navegação */
@@ -74,7 +76,7 @@ h1 {
     font-size: 2.5rem;
     color: #BD5902; /* Cor base do texto principal */
     text-align: center;
-    margin: 80px auto 40px auto; /* Espaçamento ajustado */
+    margin: 8%; /* Espaçamento ajustado */
     max-width: 800px;
     line-height: 1.2;
     padding: 0 20px;
@@ -147,7 +149,6 @@ h2 {
 }
 
 #suaPersonalidade{
-    text-align: center;
     margin-left: 5%;
     margin-right: 5%;
 }
@@ -182,4 +183,51 @@ button{
     padding: 10px 20px;
     font-size: 120%;
     font-weight: 500;
+}
+
+/*_______________________________________*/
+
+.servicos-info {
+    display: flex;
+    margin-top: 30px;
+    padding: 7%;
+}
+
+.servico-item {
+    position: relative;
+    width: 25%;
+    text-align: center;
+    margin: 0.3%;
+}
+
+.servico-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.servico-item p {
+    position: absolute;
+    top:75%;
+    color: var(--primary-orange);
+    width: 100%;
+    padding: 0 10px;
+    text-shadow: 1px 1px 3px var(--black);
+}
+/*_______________________________________*/
+#pqNos{
+    margin-left: 7%;
+    margin-right: 5%;
+    margin-bottom: 10%;
+}
+
+#pqNos > h2{
+    display: flex;
+}
+
+#pqNos > p{
+    margin-left: 1%;
+    font-size: 1.2rem;
+    text-align: left;
+    width: 70%;
 }
