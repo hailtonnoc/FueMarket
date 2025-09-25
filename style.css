@@ -73,9 +73,9 @@ header {
 
 /* Título Principal */
 h1 {
+    display: inline-block;
     font-size: 2.5rem;
     color: #BD5902; /* Cor base do texto principal */
-    text-align: center;
     margin: 8%; /* Espaçamento ajustado */
     max-width: 800px;
     line-height: 1.2;
@@ -244,19 +244,64 @@ button{
 }
 
 #forma-1{
-    background-color: var(--primary-orange);
+    background-color: #FFA705;
     padding: 40px;
     border-radius: 50%;
-    transform: rotate(-20deg);
+    transform: rotate(-40deg);
     width: 400px;
-    height: 250px;
-    display: flex;
+    height: 200px;
+    display: relative;
     justify-content: center;
     align-items: center;
     margin: 30px;
+    top: 100%;
 }
 
 #forma-1 p {
     font-size: 2rem;
-    transform: rotate(20deg);
+    transform: rotate(40deg);
+    padding: 1%;
+}
+
+#forma-2{
+    background-color: var(--secondary-orange);
+    border-radius: 10px;
+    display: relative;
+    width: 315px;
+    padding: 10px;
+    margin-left: 60%;
+}
+
+#forma-3{
+    background-color: #FEC286;
+    border-radius: 50%;
+    display: relative;
+    width: 220px;
+    padding: 20px;
+    transform: rotate(-15deg);
+    margin-left: 69%;
+}
+
+#forma-4{
+    background-color: #ACA3CA;
+    border-radius: 10px;
+    display: relative;
+    width: 350px;
+    padding: 10px;
+    margin-left: 51%;
+}
+
+#forma-5{
+    background-color: #92A818;
+    border-radius: 50%;
+    display: relative;
+    width: 300px;
+    height: 70px;
+    padding: 30px;
+    margin-left: 57%;
+}
+
+#forma-5 p{
+    display: relative;
+    top: 2%;
 }
