@@ -231,3 +231,18 @@ button{
     text-align: left;
     width: 70%;
 }
+
+/*_______________________________________*/
+
+#issoNaoEObvio{
+    background-color: #4D4B4B;
+    color: var(--white);
+}
+
+.formas{
+    font-size: 1.5rem;
+}
+
+#forma-1{
+    background-color:#FF7700;
+}
