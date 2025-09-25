@@ -278,7 +278,7 @@ button{
     display: relative;
     width: 220px;
     padding: 20px;
-    transform: rotate(-15deg);
+    transform: rotate(-10deg);
     margin-left: 69%;
 }
 
@@ -289,6 +289,7 @@ button{
     width: 350px;
     padding: 10px;
     margin-left: 51%;
+    transform: rotate(2deg);
 }
 
 #forma-5{
@@ -301,6 +302,8 @@ button{
     height: 70px;
     padding: 30px;
     margin-left: 57%;
+    position: relative;
+    top: 10px;
 }
 
 #forma-5 p{
