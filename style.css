@@ -276,7 +276,7 @@ button{
     background-color: #FEC286;
     border-radius: 50%;
     display: relative;
-    width: 220px;
+    width: 230px;
     padding: 20px;
     transform: rotate(-10deg);
     margin-left: 69%;
@@ -303,7 +303,7 @@ button{
     padding: 30px;
     margin-left: 57%;
     position: relative;
-    top: 10px;
+    top: -3px;
 }
 
 #forma-5 p{
