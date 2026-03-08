@@ -497,3 +497,120 @@ button {
         transform: translateY(0) rotate(-40deg);
     }
 }
+
+
+/* Contato */
+#contato {
+    padding: 50px 20px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: var(--sombra-padrao);
+    max-width: 1000px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+#contato h2 {
+    color: var(--verdeEscuro);
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+#contato h2:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background-color: var(--laranja);
+    border-radius: 4px;
+}
+
+/* Links */
+.links {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 30px 0;
+}
+
+.links a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--verdeEscuro);
+    transition: all 0.3s ease;
+}
+
+.links a:hover {
+    transform: translateY(-8px);
+}
+
+.links a img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 50%;
+    padding: 10px;
+    background-color: #f8f8f8;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    margin-bottom: 10px;
+}
+
+.links a:hover img {
+    background-color: var(--roxo);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+
+footer {
+    background-color: var(--verdeEscuro);
+    color: black;
+    text-align: center;
+    padding: 30px 20px;
+    border-radius: 20px 20px 0 0;
+    margin-top: 50px;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+}
+
+footer a {
+    color: black;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--laranja);
+}
+
+.hailton {
+    background-color: #000000;
+    text-align: center;
+    font-family: 'Prata', serif;
+    font-size: 0.75em;
+    color: #ffffff;
+    padding: 5px 10px;
+    margin-top: 0;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+    border-top: 1px solid var(--roxo);
+}
+
+.hailton:hover {
+    opacity: 0.9;
+}
+
+.hailton a {
+    color: var(--roxo);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.hailton a:hover {
+    color: var(--laranja);
+}
