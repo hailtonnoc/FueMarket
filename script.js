@@ -50,6 +50,11 @@ document.addEventListener('DOMContentLoaded', () => {
             // Cards do fundo (zPosition < 0) ficam com z-index menor
             const zIndexValue = Math.round((zPosition + 1) * 10); // Escala de 0 a 20
             item.style.zIndex = zIndexValue;
+
+            // Corrige a inclinação (tilt) individual para deixar o card reto ao passar na frente e no fundo
+            // A rotação X é anulada progressivamente baseada no eixo Z
+            const cancelTilt = 15 * zPosition;
+            item.style.transform = `rotateY(${itemAngle}deg) translateZ(${radius}px) rotateX(${cancelTilt}deg)`;
         });
     }
 

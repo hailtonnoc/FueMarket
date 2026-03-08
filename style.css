@@ -147,8 +147,7 @@ h2 {
     height: 100%;
     backface-visibility: visible;
     /* Permite ver o lado de trás dos itens no fundo */
-    transition: transform 0.5s ease;
-    /* Removida transição de opacidade para JS renderizar ao vivo */
+    /* Transition removida pois o transform agora é feito quadro a quadro pelo JavaScript */
 }
 
 .carousel-item img {
