@@ -31,8 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Aplica a rotação atual ao contêiner principal do carrossel e opacidade
     function applyContainerRotation() {
-        // Inclina o eixo (rotateX) para criar uma parábola anelar e levanta o fundo
-        carouselContainer.style.transform = `rotateX(-15deg) rotateY(${currentRotationY}deg)`;
+        // Aumenta a inclinação do eixo (rotateX) para criar um olhar mais "de cima"
+        carouselContainer.style.transform = `rotateX(-24deg) rotateY(${currentRotationY}deg)`;
 
         // Atualiza a opacidade e z-index dos itens baseado na profundidade
         carouselItems.forEach((item, index) => {
@@ -51,10 +51,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const zIndexValue = Math.round((zPosition + 1) * 10); // Escala de 0 a 20
             item.style.zIndex = zIndexValue;
 
-            // Corrige a inclinação (tilt) individual para deixar o card reto ao passar na frente e no fundo
-            // A rotação X é anulada progressivamente baseada no eixo Z
-            const cancelTilt = 15 * zPosition;
-            item.style.transform = `rotateY(${itemAngle}deg) translateZ(${radius}px) rotateX(${cancelTilt}deg)`;
+            // Remove a rotação X progressiva baseada no eixo Z que forçava a imagem a ficar reta
+            // Agora os cards acompanham fidedignamente o ângulo do anel principal (-35deg)
+            item.style.transform = `rotateY(${itemAngle}deg) translateZ(${radius}px)`;
         });
     }
 
