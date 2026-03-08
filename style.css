@@ -276,6 +276,7 @@ button {
     justify-content: center;
     align-items: center;
     margin: 30px;
+    margin-left: 21%;
     top: 100%;
 }
 
@@ -291,7 +292,7 @@ button {
     display: relative;
     width: 315px;
     padding: 10px;
-    margin-left: 60%;
+    margin-left: 50%;
 }
 
 #forma-3 {
@@ -301,7 +302,7 @@ button {
     width: 230px;
     padding: 20px;
     transform: rotate(-10deg);
-    margin-left: 69%;
+    margin-left: 54%;
 }
 
 #forma-4 {
@@ -310,7 +311,7 @@ button {
     display: relative;
     width: 350px;
     padding: 10px;
-    margin-left: 51%;
+    margin-left: 47%;
     transform: rotate(2deg);
 }
 
@@ -323,7 +324,7 @@ button {
     width: 300px;
     height: 70px;
     padding: 30px;
-    margin-left: 57%;
+    margin-left: 50%;
     position: relative;
     top: -3px;
 }
