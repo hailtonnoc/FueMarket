@@ -51,9 +51,18 @@ document.addEventListener('DOMContentLoaded', () => {
             const zIndexValue = Math.round((zPosition + 1) * 10); // Escala de 0 a 20
             item.style.zIndex = zIndexValue;
 
-            // Remove a rotação X progressiva baseada no eixo Z que forçava a imagem a ficar reta
-            // Agora os cards acompanham fidedignamente o ângulo do anel principal (-35deg)
-            item.style.transform = `rotateY(${itemAngle}deg) translateZ(${radius}px)`;
+            // Para que as imagens fiquem retas (sem serem afetadas pela inclinação de -24deg do anel)
+            // mas ainda girem entorno do anel com a visão lateral natural:
+            // 1. Posicionamos no anel: rotateY(itemAngle) translateZ(radius)
+            // 2. Anulamos a rotação global inteira: rotateY(-totalAngle) rotateX(24deg)
+            // 3. Recolocamos SOMENTE a rotação natural "Y" que ela teria no anel: rotateY(totalAngle)
+            item.style.transform = `
+                rotateY(${itemAngle}deg) 
+                translateZ(${radius}px) 
+                rotateY(${-totalAngle}deg) 
+                rotateX(24deg)
+                rotateY(${totalAngle}deg)
+            `;
         });
     }
 
