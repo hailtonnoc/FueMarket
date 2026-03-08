@@ -311,6 +311,14 @@ button{
 }
 
 /*_______________________________________*/
+#cases{
+    display: inline-flex;
+}
+
+#cases > *
+{
+    margin: 0 20px;
+}
 
 .case-num > * > *
 {
@@ -344,4 +352,46 @@ button{
     font-size: 140%;
     margin-top: -10px;
     width: 150px;
+}
+
+.case-imgs
+{
+    position: relative;
+    width: 400px;
+    height: 550px;
+    margin: 40px auto;
+}
+
+.case-imgs img {
+    position: absolute;
+    max-height: 500px;
+    width: 250px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.case-imgs img:nth-child(1) {
+    top: 90px;
+    left: 0;
+    z-index: 1;
+}
+
+.case-imgs img:nth-child(2) {
+    top: 20px;
+    left: 75px;
+    z-index: 2;
+}
+
+.case-imgs img:nth-child(3) {
+    top: 10px;
+    right: 0;
+    z-index: 3;
+}
+
+.case-imgs img:hover {
+    transform: scale(1.05) rotate(0);
+    z-index: 4;
 }
