@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const carouselItems = document.querySelectorAll('.carousel-item');
     const numItems = carouselItems.length;
     const angleStep = 360 / numItems; // Ângulo entre cada item
-    const radius = 300; // Raio do círculo em pixels (ajuste conforme necessário)
+    const radius = 220; // Raio do círculo em pixels diminuído (aproximando os itens uns dos outros)
     let currentRotationY = 0; // Rotação Y atual do carrossel principal
 
     let isDragging = false;
@@ -29,9 +29,28 @@ document.addEventListener('DOMContentLoaded', () => {
     // Aplica as posições iniciais dos itens
     positionItems();
 
-    // Aplica a rotação atual ao contêiner principal do carrossel
+    // Aplica a rotação atual ao contêiner principal do carrossel e opacidade
     function applyContainerRotation() {
-        carouselContainer.style.transform = `rotateY(${currentRotationY}deg)`;
+        // Inclina o eixo (rotateX) para criar uma parábola anelar e levanta o fundo
+        carouselContainer.style.transform = `rotateX(-15deg) rotateY(${currentRotationY}deg)`;
+
+        // Atualiza a opacidade e z-index dos itens baseado na profundidade
+        carouselItems.forEach((item, index) => {
+            const itemAngle = index * angleStep;
+            // Ângulo absoluto deste item na visão da câmera
+            const totalAngle = itemAngle + currentRotationY;
+            // Transforma o ângulo em radianos e calcula o z-depth (-1 ao fundo, 1 na frente)
+            const zPosition = Math.cos(totalAngle * Math.PI / 180);
+
+            // Opacidade varia de 0.2 (fundo) a 1.0 (frente)
+            const opacity = 0.6 + (0.4 * zPosition);
+            item.style.opacity = opacity.toFixed(2);
+
+            // Calcula Z-Index: cards da frente (zPosition > 0) ganham z-index maior que o H1 (z-index: 5)
+            // Cards do fundo (zPosition < 0) ficam com z-index menor
+            const zIndexValue = Math.round((zPosition + 1) * 10); // Escala de 0 a 20
+            item.style.zIndex = zIndexValue;
+        });
     }
 
     // --- Comportamento de rotação automática ---
@@ -39,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const startAutoRotate = () => {
         stopAutoRotate(); // Garante que não haja múltiplos intervalos rodando
         autoRotateInterval = setInterval(() => {
-            currentRotationY -= 0.2; // Velocidade da rotação automática (ajuste conforme desejar)
+            currentRotationY -= 0.1; // Velocidade da rotação automática (ajuste conforme desejar)
             applyContainerRotation();
         }, 10); // A cada 10ms
     };

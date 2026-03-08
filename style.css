@@ -76,15 +76,18 @@ header {
 
 /* Título Principal */
 h1 {
-    display: inline-block;
+    display: block;
     font-size: 2.5rem;
     color: #BD5902;
     /* Cor base do texto principal */
-    margin: 8%;
-    /* Espaçamento ajustado */
+    margin: 5% auto;
+    /* Espaçamento ajustado para focar no centro */
     max-width: 800px;
     line-height: 1.2;
     padding: 0 20px;
+    position: relative;
+    z-index: 5;
+    /* H1 ficará acima dos cards do fundo, mas abaixo dos da frente (via JS) */
 }
 
 h2 {
@@ -96,18 +99,25 @@ h2 {
 
 /* Carousel Section */
 #carousel-section {
-    margin-top: 50px;
-    padding: 20px 0;
+    margin-top: -100px;
+    /* Avança substancialmente sobre o H1 */
+    margin-bottom: 80px;
+    /* Aumenta a distância entre o carrossel e a suaPersonalidade */
+    padding: 0;
+    /* Removido padding para apertar o layout */
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 500px;
-    /* Altura para acomodar o carrossel 3D */
+    min-height: 400px;
+    /* Altura ajustada para os novos cards */
+    position: relative;
+    z-index: 2;
+    /* Garante que o container base do carrossel não encubra tudo */
 }
 
 .carousel-wrapper {
-    perspective: 1500px;
-    /* Define a profundidade da cena 3D */
+    perspective: 1000px;
+    /* Profundidade maior para aumentar a distorção entre a frente e fundo */
     width: 100%;
     display: flex;
     justify-content: center;
@@ -116,10 +126,10 @@ h2 {
 
 .carousel-container {
     position: relative;
-    width: 200px;
-    /* Largura de um item, para referência */
-    height: 200px;
-    /* Altura de um item, para referência */
+    width: 194px;
+    /* Largura aumentada em mais 10% (de 176px para 194px) */
+    height: 194px;
+    /* Altura aumentada em mais 10% (de 176px para 194px) */
     transform-style: preserve-3d;
     transition: transform 0.5s;
     /* Para suavizar a rotação manual */
@@ -135,9 +145,10 @@ h2 {
     left: 0;
     width: 100%;
     height: 100%;
-    backface-visibility: hidden;
-    /* Oculta o lado de trás dos itens */
-    transition: transform 0.5s ease, opacity 0.5s ease;
+    backface-visibility: visible;
+    /* Permite ver o lado de trás dos itens no fundo */
+    transition: transform 0.5s ease;
+    /* Removida transição de opacidade para JS renderizar ao vivo */
 }
 
 .carousel-item img {
