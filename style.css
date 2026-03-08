@@ -14,7 +14,7 @@
     --white: #FFFFFF;
     --black: #000000;
     --purple: #87078E;
-    --purple-pastel: #8873FF; 
+    --purple-pastel: #8873FF;
     --green: #BCD918;
 }
 
@@ -23,7 +23,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'libre franklin', 'inter', 'Lato', sans-serif; 
+    font-family: 'libre franklin', 'inter', 'Lato', sans-serif;
     font-weight: 400;
     text-align: center;
 }
@@ -32,14 +32,16 @@ body {
     line-height: 1.6;
     color: var(--dark-grey);
     background-color: var(--white);
-    overflow-x: hidden; /* Evita scroll horizontal */
+    overflow-x: hidden;
+    /* Evita scroll horizontal */
     font-size: 1.1rem;
 }
 
 /* Cabeçalho e Navegação */
 header {
     padding: 15px 0;
-    position: relative; /* Para posicionar a forma roxa no canto */
+    position: relative;
+    /* Para posicionar a forma roxa no canto */
     width: 100%;
 }
 
@@ -47,7 +49,8 @@ header {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
-    justify-content: flex-end; /* Alinha o menu à direita como na imagem */
+    justify-content: flex-end;
+    /* Alinha o menu à direita como na imagem */
     align-items: center;
     padding: 0 20px;
 }
@@ -75,8 +78,10 @@ header {
 h1 {
     display: inline-block;
     font-size: 2.5rem;
-    color: #BD5902; /* Cor base do texto principal */
-    margin: 8%; /* Espaçamento ajustado */
+    color: #BD5902;
+    /* Cor base do texto principal */
+    margin: 8%;
+    /* Espaçamento ajustado */
     max-width: 800px;
     line-height: 1.2;
     padding: 0 20px;
@@ -96,11 +101,13 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 500px; /* Altura para acomodar o carrossel 3D */
+    min-height: 500px;
+    /* Altura para acomodar o carrossel 3D */
 }
 
 .carousel-wrapper {
-    perspective: 1500px; /* Define a profundidade da cena 3D */
+    perspective: 1500px;
+    /* Define a profundidade da cena 3D */
     width: 100%;
     display: flex;
     justify-content: center;
@@ -109,10 +116,13 @@ h2 {
 
 .carousel-container {
     position: relative;
-    width: 200px; /* Largura de um item, para referência */
-    height: 200px; /* Altura de um item, para referência */
+    width: 200px;
+    /* Largura de um item, para referência */
+    height: 200px;
+    /* Altura de um item, para referência */
     transform-style: preserve-3d;
-    transition: transform 0.5s; /* Para suavizar a rotação manual */
+    transition: transform 0.5s;
+    /* Para suavizar a rotação manual */
 }
 
 .carousel-container.dragging {
@@ -125,7 +135,8 @@ h2 {
     left: 0;
     width: 100%;
     height: 100%;
-    backface-visibility: hidden; /* Oculta o lado de trás dos itens */
+    backface-visibility: hidden;
+    /* Oculta o lado de trás dos itens */
     transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
@@ -134,13 +145,13 @@ h2 {
     height: 100%;
     object-fit: cover;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 
 /* _________________________________________________*/
 
-.qstFraco{
+.qstFraco {
     display: inline;
     background-color: #ff770095;
     border-radius: 6px;
@@ -148,25 +159,25 @@ h2 {
     font-size: 140%;
 }
 
-#suaPersonalidade{
+#suaPersonalidade {
     margin-left: 5%;
     margin-right: 5%;
 }
 
-#suaPersonalidade p{
+#suaPersonalidade p {
     font-size: 1.2rem;
     text-align: center;
     margin-left: 4%;
     margin-right: 4%;
 }
 
-#elementos{
+#elementos {
     text-align: center;
-        margin-top: 3%;
-        margin-bottom: 6%;
+    margin-top: 3%;
+    margin-bottom: 6%;
 }
 
-#elementos > p{
+#elementos>p {
     display: inline;
     color: var(--primary-orange);
     margin: 3%;
@@ -174,7 +185,7 @@ h2 {
 }
 
 /*________________________________________________*/
-button{
+button {
     cursor: pointer;
     background-color: var(--secondary-orange);
     color: var(--black);
@@ -208,24 +219,25 @@ button{
 
 .servico-item p {
     position: absolute;
-    top:75%;
+    top: 75%;
     color: var(--primary-orange);
     width: 100%;
     padding: 0 10px;
     text-shadow: 1px 1px 3px var(--black);
 }
+
 /*_______________________________________*/
-#pqNos{
+#pqNos {
     margin-left: 7%;
     margin-right: 5%;
     margin-bottom: 10%;
 }
 
-#pqNos > h2{
+#pqNos>h2 {
     display: flex;
 }
 
-#pqNos > p{
+#pqNos>p {
     margin-left: 1%;
     font-size: 1.2rem;
     text-align: left;
@@ -234,16 +246,16 @@ button{
 
 /*_______________________________________*/
 
-#issoNaoEObvio{
+#issoNaoEObvio {
     background-color: #4D4B4B;
     color: var(--white);
 }
 
-.formas{
+.formas {
     font-size: 1.5rem;
 }
 
-#forma-1{
+#forma-1 {
     background-color: #FFA705;
     padding: 40px;
     border-radius: 50%;
@@ -263,7 +275,7 @@ button{
     padding: 1%;
 }
 
-#forma-2{
+#forma-2 {
     background-color: var(--secondary-orange);
     border-radius: 10px;
     display: relative;
@@ -272,7 +284,7 @@ button{
     margin-left: 60%;
 }
 
-#forma-3{
+#forma-3 {
     background-color: #FEC286;
     border-radius: 50%;
     display: relative;
@@ -282,7 +294,7 @@ button{
     margin-left: 69%;
 }
 
-#forma-4{
+#forma-4 {
     background-color: #ACA3CA;
     border-radius: 10px;
     display: relative;
@@ -292,7 +304,7 @@ button{
     transform: rotate(2deg);
 }
 
-#forma-5{
+#forma-5 {
     background-color: #92A818;
     border-radius: 50%;
     display: flex;
@@ -306,29 +318,26 @@ button{
     top: -3px;
 }
 
-#forma-5 p{
+#forma-5 p {
     margin: 0;
 }
 
 /*_______________________________________*/
-#cases{
+#cases {
     display: inline-flex;
 }
 
-#cases > *
-{
+#cases>* {
     margin: 0 20px;
 }
 
-.case-num > * > *
-{
+.case-num>*>* {
     display: inline-block;
     font-size: 2.5rem;
     margin: 0 10px;
 }
 
-.case-num > div
-{
+.case-num>div {
     display: flex;
     align-items: flex-end;
     justify-content: flex-start;
@@ -340,22 +349,19 @@ button{
     /* Ensures the border matches the text width */
 }
 
-.caseOrange
-{
+.caseOrange {
     color: var(--primary-orange);
     font-size: 350%;
 }
 
-.caseBlack
-{
+.caseBlack {
     color: var(--black);
     font-size: 140%;
     margin-top: -10px;
     width: 150px;
 }
 
-.case-imgs
-{
+.case-imgs {
     position: relative;
     width: 400px;
     height: 550px;
@@ -369,7 +375,7 @@ button{
     object-fit: cover;
     object-position: center;
     border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease-in-out;
 }
 
@@ -394,4 +400,89 @@ button{
 .case-imgs img:hover {
     transform: scale(1.05) rotate(0);
     z-index: 4;
+}
+
+/* Animação issoNaoEObvio */
+#issoNaoEObvio .formas div {
+    opacity: 0;
+}
+
+#issoNaoEObvio.animate #forma-5 {
+    animation: dropForm5 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+#issoNaoEObvio.animate #forma-4 {
+    animation: dropForm4 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.2s;
+}
+
+#issoNaoEObvio.animate #forma-3 {
+    animation: dropForm3 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.4s;
+}
+
+#issoNaoEObvio.animate #forma-2 {
+    animation: dropForm2 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.6s;
+}
+
+#issoNaoEObvio.animate #forma-1 {
+    animation: dropForm1 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.8s;
+}
+
+@keyframes dropForm5 {
+    0% {
+        opacity: 0;
+        transform: translateY(-150px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes dropForm4 {
+    0% {
+        opacity: 0;
+        transform: translateY(-150px) rotate(2deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) rotate(2deg);
+    }
+}
+
+@keyframes dropForm3 {
+    0% {
+        opacity: 0;
+        transform: translateY(-150px) rotate(-10deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) rotate(-10deg);
+    }
+}
+
+@keyframes dropForm2 {
+    0% {
+        opacity: 0;
+        transform: translateY(-150px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes dropForm1 {
+    0% {
+        opacity: 0;
+        transform: translateY(-150px) rotate(-40deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) rotate(-40deg);
+    }
 }

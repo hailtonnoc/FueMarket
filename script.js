@@ -103,4 +103,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // --- Animação da section issoNaoEObvio ---
+    const sectionObvio = document.querySelector('#issoNaoEObvio');
+    if (sectionObvio) {
+        const observerObvio = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    observerObvio.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        observerObvio.observe(sectionObvio);
+    }
+
 });
