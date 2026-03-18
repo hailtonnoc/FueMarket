@@ -759,6 +759,7 @@ footer a:hover {
     /* Elementos (Comunicação -> Marketing...) */
     #elementos { display: flex; flex-direction: column; align-items: center; gap: 10px; }
     #elementos > p { margin: 0; }
+    #elementos > .seta { transform: rotate(90deg); display: inline-block; margin: -5px 0; }
 
     /* Serviços Info (Icones página inicial) */
     .servicos-info { flex-wrap: wrap; padding: 20px; justify-content: center; }
@@ -780,8 +781,8 @@ footer a:hover {
     #issoNaoEObvio .formas div {
         margin-left: 0 !important; /* Remove as margens esquerdas absurdas do desktop */
         margin-right: 0 !important;
-        margin-top: 20px !important;
-        margin-bottom: 20px !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
         max-width: 85vw !important; /* Para não vazar a tela */
         position: relative !important;
         top: 0 !important;
@@ -790,11 +791,11 @@ footer a:hover {
     }
     
     /* Ajustes específicos de tamanho e rotação para caber em telas estreitas */
-    #forma-1 { width: 280px !important; height: 140px !important; padding: 20px !important; }
-    #forma-2 { width: 260px !important; }
-    #forma-3 { width: 200px !important; padding: 15px !important; }
-    #forma-4 { width: 280px !important; }
-    #forma-5 { width: 260px !important; }
+    #issoNaoEObvio #forma-1 { margin-bottom: 80px !important; width: 280px !important; height: 140px !important; padding: 20px !important; }
+    #issoNaoEObvio #forma-2 { width: 260px !important; }
+    #issoNaoEObvio #forma-3 { width: 200px !important; padding: 15px !important; }
+    #issoNaoEObvio #forma-4 { width: 280px !important; }
+    #issoNaoEObvio #forma-5 { width: 260px !important; }
 
     /* Recriar as keyframes das animações adaptadas para mobile (caindo retos, mas mantendo a rotação final) */
     #issoNaoEObvio.animate #forma-1 { animation: dropForm1Mob 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.8s; }
