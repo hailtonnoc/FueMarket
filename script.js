@@ -2,120 +2,78 @@ document.addEventListener('DOMContentLoaded', () => {
     const carouselContainer = document.querySelector('.carousel-container');
     const carouselItems = document.querySelectorAll('.carousel-item');
     const numItems = carouselItems.length;
-    const angleStep = 360 / numItems; // Ângulo entre cada item
-    const radius = 220; // Raio do círculo em pixels diminuído (aproximando os itens uns dos outros)
-    let currentRotationY = 0; // Rotação Y atual do carrossel principal
+    const angleStep = (2 * Math.PI) / numItems;
+    const radiusX = 400; // Raio horizontal (espaçamento)
+    const parabolaStrength = 0.0003; // Intensidade da curva parabólica
+    let currentAngle = 0;
 
-    let isDragging = false;
-    let startX;
-    let startRotationY; // Para armazenar a rotação inicial quando o arrasto começar
-
-    // Função para posicionar os itens ao longo do círculo
-    function positionItems() {
+    function updateCarousel() {
         carouselItems.forEach((item, index) => {
-            const itemAngle = index * angleStep; // Ângulo para este item
+            const angle = currentAngle + index * angleStep;
+            const x = Math.sin(angle) * radiusX;
+            // Parábola invertida: centro desce, extremidades sobem
+            const y = -(parabolaStrength * (x * x)) + 30;
+            const z = Math.cos(angle); // -1 (fundo) a 1 (frente)
 
-            // A rotação posiciona o item no ângulo correto no círculo,
-            // e a translação o empurra para fora, criando o raio.
-            item.style.transform = `
-                rotateY(${itemAngle}deg)
-                translateZ(${radius}px)
-            `;
-            // Definir o transform-origin para o centro para rotações futuras
-            item.style.transformOrigin = '50% 50%';
-        });
-    }
+            // Escala e opacidade baseadas na profundidade
+            const scale = 0.6 + 0.4 * ((z + 1) / 2);   // 0.6 a 1.0
+            const opacity = 0.3 + 0.7 * ((z + 1) / 2);  // 0.3 a 1.0
+            const zIndex = Math.round((z + 1) * 10);
 
-    // Aplica as posições iniciais dos itens
-    positionItems();
-
-    // Aplica a rotação atual ao contêiner principal do carrossel e opacidade
-    function applyContainerRotation() {
-        // Aumenta a inclinação do eixo (rotateX) para criar um olhar mais "de cima"
-        carouselContainer.style.transform = `rotateX(-24deg) rotateY(${currentRotationY}deg)`;
-
-        // Atualiza a opacidade e z-index dos itens baseado na profundidade
-        carouselItems.forEach((item, index) => {
-            const itemAngle = index * angleStep;
-            // Ângulo absoluto deste item na visão da câmera
-            const totalAngle = itemAngle + currentRotationY;
-            // Transforma o ângulo em radianos e calcula o z-depth (-1 ao fundo, 1 na frente)
-            const zPosition = Math.cos(totalAngle * Math.PI / 180);
-
-            // Opacidade varia de 0.2 (fundo) a 1.0 (frente)
-            const opacity = 0.6 + (0.4 * zPosition);
+            item.style.transform = `translateX(${x}px) translateY(${y}px) scale(${scale.toFixed(3)})`;
             item.style.opacity = opacity.toFixed(2);
-
-            // Calcula Z-Index: cards da frente (zPosition > 0) ganham z-index maior que o H1 (z-index: 5)
-            // Cards do fundo (zPosition < 0) ficam com z-index menor
-            const zIndexValue = Math.round((zPosition + 1) * 10); // Escala de 0 a 20
-            item.style.zIndex = zIndexValue;
-
-            // Para que as imagens fiquem retas (sem serem afetadas pela inclinação de -24deg do anel)
-            // mas ainda girem entorno do anel com a visão lateral natural:
-            // 1. Posicionamos no anel: rotateY(itemAngle) translateZ(radius)
-            // 2. Anulamos a rotação global inteira: rotateY(-totalAngle) rotateX(24deg)
-            // 3. Recolocamos SOMENTE a rotação natural "Y" que ela teria no anel: rotateY(totalAngle)
-            item.style.transform = `
-                rotateY(${itemAngle}deg) 
-                translateZ(${radius}px) 
-                rotateY(${-totalAngle}deg) 
-                rotateX(24deg)
-                rotateY(${totalAngle}deg)
-            `;
+            item.style.zIndex = zIndex;
         });
     }
 
-    // --- Comportamento de rotação automática ---
-    let autoRotateInterval;
-    const startAutoRotate = () => {
-        stopAutoRotate(); // Garante que não haja múltiplos intervalos rodando
-        autoRotateInterval = setInterval(() => {
-            currentRotationY -= 0.1; // Velocidade da rotação automática (ajuste conforme desejar)
-            applyContainerRotation();
-        }, 10); // A cada 10ms
-    };
+    // Rotação automática suave
+    let autoRotateActive = true;
+    const rotationSpeed = 0.004; // Radianos por frame
 
-    const stopAutoRotate = () => {
-        clearInterval(autoRotateInterval);
-    };
+    function autoRotateLoop() {
+        if (autoRotateActive) {
+            currentAngle += rotationSpeed;
+        }
+        updateCarousel();
+        requestAnimationFrame(autoRotateLoop);
+    }
 
-    // Inicia a rotação automática ao carregar
-    startAutoRotate();
+    updateCarousel();
+    requestAnimationFrame(autoRotateLoop);
 
     // --- Interação com o mouse para controle manual ---
+    let isDragging = false;
+    let startX = 0;
+    let startAngle = 0;
+
     carouselContainer.addEventListener('mousedown', (e) => {
         isDragging = true;
         startX = e.clientX;
-        startRotationY = currentRotationY; // Salva a rotação atual do carrossel
-        carouselContainer.classList.add('dragging');
-        stopAutoRotate(); // Para a rotação automática ao arrastar
-        e.preventDefault(); // Previne o comportamento padrão do arrastar de imagem/texto
+        startAngle = currentAngle;
+        autoRotateActive = false;
+        carouselContainer.style.cursor = 'grabbing';
+        e.preventDefault();
     });
 
-    // Usa 'document' para pegar o mouseup e mouseleave mesmo se o mouse sair do carrossel
     document.addEventListener('mousemove', (e) => {
         if (!isDragging) return;
         const deltaX = e.clientX - startX;
-        // Calcula a nova rotação baseada no movimento do mouse
-        currentRotationY = startRotationY + (deltaX * 0.5); // Ajuste a sensibilidade aqui
-        applyContainerRotation();
+        currentAngle = startAngle + deltaX * 0.005;
     });
 
     document.addEventListener('mouseup', () => {
         if (isDragging) {
             isDragging = false;
-            carouselContainer.classList.remove('dragging');
-            startAutoRotate(); // Retoma a rotação automática ao soltar
+            autoRotateActive = true;
+            carouselContainer.style.cursor = '';
         }
     });
 
-    // Se o mouse sair do corpo da página enquanto arrasta, também parar o arrasto
     document.addEventListener('mouseleave', () => {
         if (isDragging) {
             isDragging = false;
-            carouselContainer.classList.remove('dragging');
-            startAutoRotate();
+            autoRotateActive = true;
+            carouselContainer.style.cursor = '';
         }
     });
 
@@ -148,6 +106,81 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { threshold: 0.3 });
 
         observerObvio.observe(sectionObvio);
+    }
+
+    // --- Animação Floating Shapes ---
+    const servicosSection = document.getElementById('servicos');
+    const shapesContainer = document.getElementById('floating-shapes-container');
+    const shapesElements = document.querySelectorAll('.floating-shape');
+
+    if (servicosSection && shapesContainer && shapesElements.length > 0) {
+        // Ajusta a altura do container para cobrir desde o topo até a section serviços
+        function resizeContainer() {
+            const rect = servicosSection.getBoundingClientRect();
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            shapesContainer.style.height = (rect.top + scrollTop) + 'px';
+        }
+
+        window.addEventListener('resize', resizeContainer);
+        setTimeout(resizeContainer, 100);
+
+        const shapesData = [];
+        
+        shapesElements.forEach(el => {
+            const speedMultiplier = 0.5 + Math.random() * 0.6; // Entre 0.5 e 1.1 (velocidade agradável)
+            shapesData.push({
+                el: el,
+                x: Math.random() * (window.innerWidth - 100),
+                y: Math.random() * 500, // Inicia mais pra cima
+                vx: (Math.random() > 0.5 ? 1 : -1) * speedMultiplier,
+                vy: (Math.random() > 0.5 ? 1 : -1) * speedMultiplier,
+                rot: Math.random() * 360,
+                vRot: (Math.random() - 0.5) * 0.8, // leve rotação
+                width: 80,
+                height: 80
+            });
+        });
+
+        function animateShapes() {
+            const containerW = shapesContainer.clientWidth;
+            const containerH = shapesContainer.clientHeight;
+
+            shapesData.forEach(shape => {
+                shape.x += shape.vx;
+                shape.y += shape.vy;
+                shape.rot += shape.vRot;
+
+                // Colisões nas extremidades mudam o curso (inverte a velocidade)
+                if (shape.x <= 0) {
+                    shape.x = 0;
+                    shape.vx *= -1;
+                } else if (shape.x + shape.width >= containerW) {
+                    shape.x = containerW - shape.width;
+                    shape.vx *= -1;
+                }
+
+                if (shape.y <= 0) {
+                    shape.y = 0;
+                    shape.vy *= -1;
+                } else if (shape.y + shape.height >= containerH) {
+                    shape.y = containerH - shape.height;
+                    shape.vy *= -1;
+                }
+
+                shape.el.style.transform = `translate(${shape.x}px, ${shape.y}px) rotate(${shape.rot}deg)`;
+            });
+
+            requestAnimationFrame(animateShapes);
+        }
+
+        setTimeout(() => {
+            shapesData.forEach(shape => {
+                shape.width = shape.el.offsetWidth || 80;
+                shape.height = shape.el.offsetHeight || 80;
+            });
+            resizeContainer();
+            animateShapes();
+        }, 150);
     }
 
 });
