@@ -3,9 +3,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const carouselItems = document.querySelectorAll('.carousel-item');
     const numItems = carouselItems.length;
     const angleStep = (2 * Math.PI) / numItems;
-    const radiusX = 400; // Raio horizontal (espaçamento)
-    const parabolaStrength = 0.0003; // Intensidade da curva parabólica
+    function getRadius() {
+        return window.innerWidth < 768 ? window.innerWidth * 0.4 : 400;
+    }
+
+    function getParabola() {
+        return window.innerWidth < 768 ? 0.001 : 0.0003;
+    }
+
+    let radiusX = getRadius();
+    let parabolaStrength = getParabola();
     let currentAngle = 0;
+
+    window.addEventListener('resize', () => {
+        radiusX = getRadius();
+        parabolaStrength = getParabola();
+    });
 
     function updateCarousel() {
         carouselItems.forEach((item, index) => {
@@ -41,41 +54,58 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCarousel();
     requestAnimationFrame(autoRotateLoop);
 
-    // --- Interação com o mouse para controle manual ---
+    // --- Interação com o mouse e touch para controle manual ---
     let isDragging = false;
     let startX = 0;
     let startAngle = 0;
 
-    carouselContainer.addEventListener('mousedown', (e) => {
+    function handleStart(clientX) {
         isDragging = true;
-        startX = e.clientX;
+        startX = clientX;
         startAngle = currentAngle;
         autoRotateActive = false;
         carouselContainer.style.cursor = 'grabbing';
+    }
+
+    function handleMove(clientX) {
+        if (!isDragging) return;
+        const deltaX = clientX - startX;
+        currentAngle = startAngle + deltaX * 0.005;
+    }
+
+    function handleEnd() {
+        if (isDragging) {
+            isDragging = false;
+            autoRotateActive = true;
+            carouselContainer.style.cursor = '';
+        }
+    }
+
+    // Eventos de Mouse
+    carouselContainer.addEventListener('mousedown', (e) => {
+        handleStart(e.clientX);
         e.preventDefault();
     });
 
     document.addEventListener('mousemove', (e) => {
-        if (!isDragging) return;
-        const deltaX = e.clientX - startX;
-        currentAngle = startAngle + deltaX * 0.005;
+        handleMove(e.clientX);
     });
 
-    document.addEventListener('mouseup', () => {
-        if (isDragging) {
-            isDragging = false;
-            autoRotateActive = true;
-            carouselContainer.style.cursor = '';
-        }
-    });
+    document.addEventListener('mouseup', handleEnd);
+    document.addEventListener('mouseleave', handleEnd);
 
-    document.addEventListener('mouseleave', () => {
-        if (isDragging) {
-            isDragging = false;
-            autoRotateActive = true;
-            carouselContainer.style.cursor = '';
-        }
-    });
+    // Eventos de Touch (Mobile)
+    carouselContainer.addEventListener('touchstart', (e) => {
+        handleStart(e.touches[0].clientX);
+    }, { passive: true });
+
+    document.addEventListener('touchmove', (e) => {
+        handleMove(e.touches[0].clientX);
+    }, { passive: true });
+
+    document.addEventListener('touchend', handleEnd);
+    document.addEventListener('touchcancel', handleEnd);
+
 
     // --- Scroll suave para links de navegação ---
     document.querySelectorAll('.menu-list a').forEach(anchor => {
