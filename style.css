@@ -753,8 +753,8 @@ footer a:hover {
     h1 { font-size: 1.8rem; margin: 10% auto; padding: 0 15px; }
 
     /* Carousel */
-    #carousel-section { min-height: 300px; margin-bottom: 40px; margin-top: -50px; }
-    .carousel-container, .carousel-item { width: 200px; height: 200px; }
+    #carousel-section { min-height: 250px; margin-bottom: 30px; margin-top: -30px; width: 100%; overflow: hidden; }
+    .carousel-container, .carousel-item { width: 150px; height: 150px; }
 
     /* Elementos (Comunicação -> Marketing...) */
     #elementos { display: flex; flex-direction: column; align-items: center; gap: 10px; }
@@ -771,26 +771,29 @@ footer a:hover {
     #pqNos > p { width: 100%; margin-top: 15px; text-align: center; }
 
     /* Isso Não é Óbvio (Formas Flutuantes / Textos Destaque) */
-    #issoNaoEObvio { overflow: hidden; }
+    #issoNaoEObvio { overflow-x: hidden; width: 100vw; max-width: 100%; box-sizing: border-box; }
     #issoNaoEObvio .formas { 
         display: flex; flex-direction: column; align-items: center; 
-        padding-top: 50px; padding-bottom: 50px; 
+        padding-top: 50px; padding-bottom: 50px;
+        width: 100%; box-sizing: border-box; overflow-x: hidden;
     }
     #issoNaoEObvio .formas div {
         margin-left: 0 !important; /* Remove as margens esquerdas absurdas do desktop */
+        margin-right: 0 !important;
         margin-top: 20px !important;
         margin-bottom: 20px !important;
-        max-width: 90vw !important; /* Para não vazar a tela */
+        max-width: 85vw !important; /* Para não vazar a tela */
         position: relative !important;
         top: 0 !important;
         left: 0 !important;
+        box-sizing: border-box !important;
     }
     
     /* Ajustes específicos de tamanho e rotação para caber em telas estreitas */
-    #forma-1 { width: 300px !important; height: 150px !important; padding: 20px !important; }
-    #forma-2 { width: 280px !important; }
+    #forma-1 { width: 280px !important; height: 140px !important; padding: 20px !important; }
+    #forma-2 { width: 260px !important; }
     #forma-3 { width: 200px !important; padding: 15px !important; }
-    #forma-4 { width: 300px !important; }
+    #forma-4 { width: 280px !important; }
     #forma-5 { width: 260px !important; }
 
     /* Recriar as keyframes das animações adaptadas para mobile (caindo retos, mas mantendo a rotação final) */

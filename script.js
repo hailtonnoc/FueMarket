@@ -3,8 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const carouselItems = document.querySelectorAll('.carousel-item');
     const numItems = carouselItems.length;
     const angleStep = (2 * Math.PI) / numItems;
+
     function getRadius() {
-        return window.innerWidth < 768 ? window.innerWidth * 0.4 : 400;
+        if (window.innerWidth >= 768) return 400;
+        const itemHalfWidth = 75; // 150/2
+        return Math.max(50, (window.innerWidth / 2) - itemHalfWidth - 5);
     }
 
     function getParabola() {
