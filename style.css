@@ -18,6 +18,26 @@
     --green: #BCD918;
 }
 
+/* ============================
+   Custom Scrollbar
+   ============================ */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--dark-grey);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-orange);
+    border-radius: 6px;
+    border: 3px solid var(--dark-grey); /* Espaçamento interno */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--burned-yellow);
+}
 /* Reset Básico e Fontes */
 * {
     margin: 0;
