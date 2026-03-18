@@ -1,0 +1,320 @@
+/* sobre.css — Estilos exclusivos da página Sobre */
+
+/* ============================
+   Seção 1 — Apresentação pessoal
+   ============================ */
+#sobre-intro {
+    padding: 60px 24px 50px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.sobre-intro-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.sobre-photo {
+    flex-shrink: 0;
+}
+
+.sobre-photo-placeholder {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-orange), var(--burned-yellow));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--white);
+    box-shadow: 0 8px 30px rgba(255, 119, 0, 0.25);
+}
+
+/* Se depois adicionar foto real, usar: */
+.sobre-photo img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.sobre-intro-text h1 {
+    font-size: 2.2rem;
+    color: #BD5902;
+    margin-bottom: 16px;
+    text-align: left;
+}
+
+.sobre-intro-text p {
+    font-size: 1.1rem;
+    color: var(--dark-grey);
+    line-height: 1.7;
+    text-align: left;
+}
+
+.sobre-intro-text strong {
+    color: var(--primary-orange);
+}
+
+.sobre-invite {
+    margin-top: 20px;
+    font-size: 1.2rem !important;
+    font-weight: 600;
+    color: var(--bluh2) !important;
+}
+
+/* ============================
+   Seção 2 — Missão, Visão e Valores
+   ============================ */
+#sobre-mvv {
+    padding: 70px 24px 80px;
+    background-color: #f7f7f7;
+}
+
+#sobre-mvv h2 {
+    font-size: 2rem;
+    color: var(--bluh2);
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.mvv-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.mvv-card {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.mvv-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 36px rgba(255, 119, 0, 0.12);
+}
+
+.mvv-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.mvv-card h3 {
+    font-size: 1.3rem;
+    color: var(--primary-orange);
+    margin: 20px 20px 10px;
+}
+
+.mvv-card p {
+    font-size: 0.95rem;
+    color: var(--dark-grey);
+    line-height: 1.6;
+    padding: 0 20px 24px;
+}
+
+/* ============================
+   Seção 3 — Experiência / Timeline
+   ============================ */
+#sobre-exp {
+    padding: 70px 24px 80px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#sobre-exp h2 {
+    font-size: 1.8rem;
+    color: var(--bluh2);
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.exp-timeline {
+    position: relative;
+    padding-left: 40px;
+}
+
+/* Linha vertical */
+.exp-timeline::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--primary-orange), var(--burned-yellow));
+    border-radius: 3px;
+}
+
+.exp-item {
+    position: relative;
+    margin-bottom: 36px;
+}
+
+.exp-dot {
+    position: absolute;
+    left: -34px;
+    top: 4px;
+    width: 14px;
+    height: 14px;
+    background-color: var(--primary-orange);
+    border-radius: 50%;
+    border: 3px solid var(--white);
+    box-shadow: 0 0 0 3px var(--primary-orange);
+}
+
+.exp-content h3 {
+    font-size: 1.1rem;
+    color: var(--bluh2);
+    margin-bottom: 6px;
+    text-align: left;
+}
+
+.exp-content p {
+    font-size: 0.95rem;
+    color: var(--dark-grey);
+    line-height: 1.6;
+    text-align: left;
+}
+
+/* ============================
+   Seção 4 — Skills
+   ============================ */
+#sobre-skills {
+    padding: 70px 24px 80px;
+    background-color: var(--dark-grey);
+    color: var(--white);
+}
+
+#sobre-skills h2 {
+    font-size: 2rem;
+    color: var(--white);
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.skills-container {
+    display: flex;
+    gap: 50px;
+    max-width: 900px;
+    margin: 0 auto;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.skills-group {
+    flex: 1;
+    min-width: 280px;
+}
+
+.skills-group h3 {
+    font-size: 1.3rem;
+    color: var(--primary-orange);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.skills-list {
+    list-style: none;
+    padding: 0;
+}
+
+.skills-list li {
+    padding: 12px 18px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    text-align: left;
+    transition: transform 0.2s ease;
+}
+
+.skills-list li:hover {
+    transform: translateX(6px);
+}
+
+.skills-hard li {
+    background: rgba(255, 119, 0, 0.12);
+    border-left: 3px solid var(--primary-orange);
+    color: var(--white);
+}
+
+.skills-soft li {
+    background: rgba(136, 115, 255, 0.12);
+    border-left: 3px solid var(--purple-pastel);
+    color: var(--white);
+}
+
+/* ============================
+   Seção 5 — CTA
+   ============================ */
+#sobre-cta {
+    padding: 70px 24px 80px;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+#sobre-cta h2 {
+    font-size: 2rem;
+    color: var(--bluh2);
+    margin-bottom: 12px;
+}
+
+#sobre-cta > p {
+    font-size: 1.15rem;
+    color: var(--dark-grey);
+    margin-bottom: 36px;
+}
+
+.sobre-cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* ============================
+   Responsivo
+   ============================ */
+@media (max-width: 768px) {
+    .sobre-intro-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .sobre-intro-text h1,
+    .sobre-intro-text p {
+        text-align: center;
+    }
+
+    .mvv-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .exp-timeline {
+        padding-left: 30px;
+    }
+
+    .exp-dot {
+        left: -24px;
+    }
+
+    .skills-container {
+        flex-direction: column;
+    }
+
+    .sobre-cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}
