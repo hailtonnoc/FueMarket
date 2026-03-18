@@ -4,7 +4,7 @@
    Seção 1 — Introdução
    ============================ */
 #srv-intro {
-    max-width: 800px;
+    max-width: 900px;
     margin: 60px auto 50px;
     padding: 0 24px;
 }
@@ -13,7 +13,7 @@
     font-size: 2.4rem;
     color: #BD5902;
     line-height: 1.25;
-    margin-bottom: 24px;
+    margin-bottom: 40px;
 }
 
 #srv-intro p {
@@ -25,6 +25,46 @@
 
 #srv-intro strong {
     color: var(--primary-orange);
+}
+
+/* Pilares da proposta de valor */
+.srv-pillars {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.srv-pillar {
+    background: #f9f9f9;
+    border-radius: 16px;
+    padding: 36px 28px 32px;
+    border-left: 4px solid var(--primary-orange);
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.srv-pillar:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(255, 119, 0, 0.1);
+}
+
+.srv-pillar-icon {
+    font-size: 2rem;
+    margin-bottom: 12px;
+}
+
+.srv-pillar h3 {
+    font-size: 1.2rem;
+    color: var(--bluh2);
+    margin-bottom: 12px;
+    text-align: left;
+}
+
+.srv-pillar p {
+    font-size: 0.95rem;
+    color: var(--dark-grey);
+    line-height: 1.65;
+    text-align: left;
 }
 
 /* ============================
@@ -58,6 +98,8 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .srv-card::before {
@@ -102,8 +144,96 @@
     text-align: left;
 }
 
+/* Badge de resultado/exemplo nos cards */
+.srv-card-result {
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px dashed #e0e0e0;
+    font-size: 0.85rem;
+    color: var(--dark-grey);
+    line-height: 1.5;
+    text-align: left;
+}
+
+.srv-card-result span {
+    font-weight: 700;
+    color: var(--primary-orange);
+}
+
 /* ============================
-   Seção 3 — Prova Social
+   Seção 3 — Cases
+   ============================ */
+#srv-cases {
+    padding: 70px 24px 80px;
+    background-color: #f7f7f7;
+}
+
+#srv-cases h2 {
+    font-size: 2rem;
+    color: var(--bluh2);
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.srv-cases-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.srv-case-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 32px 28px;
+    text-align: left;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    border-top: 4px solid var(--primary-orange);
+}
+
+.srv-case-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 36px rgba(255, 119, 0, 0.12);
+}
+
+.srv-case-year {
+    display: inline-block;
+    background: var(--primary-orange);
+    color: var(--white);
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+}
+
+.srv-case-card h3 {
+    font-size: 1.3rem;
+    color: var(--bluh2);
+    margin-bottom: 8px;
+    text-align: left;
+}
+
+.srv-case-service {
+    font-size: 0.85rem;
+    color: var(--primary-orange);
+    font-weight: 600;
+    margin-bottom: 12px;
+    text-align: left;
+}
+
+.srv-case-card p {
+    font-size: 0.95rem;
+    color: var(--dark-grey);
+    line-height: 1.6;
+    text-align: left;
+}
+
+/* ============================
+   Seção 4 — Prova Social
    ============================ */
 #srv-proof {
     background-color: var(--dark-grey);
@@ -157,7 +287,7 @@
     color: var(--white);
     opacity: 0.7;
     max-width: 600px;
-    margin: 0 auto 30px;
+    margin: 0 auto;
     line-height: 1.6;
 }
 
@@ -200,13 +330,20 @@
 }
 
 /* ============================
-   Seção 4 — CTA
+   Seção 5 — CTA
    ============================ */
 #srv-cta {
     padding: 70px 24px 80px;
     text-align: center;
     max-width: 700px;
     margin: 0 auto;
+}
+
+.srv-cta-invite {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #BD5902;
+    margin-bottom: 10px;
 }
 
 #srv-cta h2 {
@@ -244,10 +381,22 @@
     .srv-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .srv-cases-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .srv-pillars {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 600px) {
     .srv-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .srv-cases-grid {
         grid-template-columns: 1fr;
     }
 
