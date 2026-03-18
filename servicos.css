@@ -1,0 +1,270 @@
+/* servicos.css — Estilos exclusivos da página de serviços */
+
+/* ============================
+   Seção 1 — Introdução
+   ============================ */
+#srv-intro {
+    max-width: 800px;
+    margin: 60px auto 50px;
+    padding: 0 24px;
+}
+
+#srv-intro h1 {
+    font-size: 2.4rem;
+    color: #BD5902;
+    line-height: 1.25;
+    margin-bottom: 24px;
+}
+
+#srv-intro p {
+    font-size: 1.15rem;
+    color: var(--dark-grey);
+    line-height: 1.7;
+    text-align: center;
+}
+
+#srv-intro strong {
+    color: var(--primary-orange);
+}
+
+/* ============================
+   Seção 2 — Lista de Serviços
+   ============================ */
+#srv-list {
+    padding: 60px 24px 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+#srv-list h2 {
+    font-size: 2rem;
+    color: var(--bluh2);
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.srv-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.srv-card {
+    background: var(--white);
+    border: 1px solid #e8e8e8;
+    border-radius: 16px;
+    padding: 36px 28px 32px;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.srv-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-orange), var(--burned-yellow));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.srv-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 36px rgba(255, 119, 0, 0.12);
+    border-color: var(--secondary-orange);
+}
+
+.srv-card:hover::before {
+    opacity: 1;
+}
+
+.srv-card-icon {
+    font-size: 2.4rem;
+    margin-bottom: 16px;
+}
+
+.srv-card h3 {
+    font-size: 1.2rem;
+    color: var(--bluh2);
+    margin-bottom: 12px;
+    line-height: 1.3;
+    text-align: left;
+}
+
+.srv-card p {
+    font-size: 0.95rem;
+    color: var(--dark-grey);
+    line-height: 1.65;
+    text-align: left;
+}
+
+/* ============================
+   Seção 3 — Prova Social
+   ============================ */
+#srv-proof {
+    background-color: var(--dark-grey);
+    color: var(--white);
+    padding: 70px 24px 60px;
+    text-align: center;
+}
+
+#srv-proof h2 {
+    font-size: 2rem;
+    color: var(--white);
+    margin-bottom: 8px;
+}
+
+.srv-proof-subtitle {
+    font-size: 1.1rem;
+    color: var(--creme);
+    margin-bottom: 40px;
+}
+
+.srv-proof-grid {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.srv-proof-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.srv-proof-number {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--primary-orange);
+    line-height: 1.1;
+}
+
+.srv-proof-label {
+    font-size: 1rem;
+    color: var(--white);
+    margin-top: 6px;
+    opacity: 0.85;
+}
+
+.srv-proof-extra {
+    font-size: 1rem;
+    color: var(--white);
+    opacity: 0.7;
+    max-width: 600px;
+    margin: 0 auto 30px;
+    line-height: 1.6;
+}
+
+/* ============================
+   Botões reutilizáveis
+   ============================ */
+.srv-btn {
+    display: inline-block;
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+    cursor: pointer;
+}
+
+.srv-btn-whatsapp {
+    background-color: #25D366;
+    color: var(--white);
+}
+
+.srv-btn-whatsapp:hover {
+    background-color: #1fb855;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+}
+
+.srv-btn-outline {
+    background: transparent;
+    color: var(--primary-orange);
+    border: 2px solid var(--primary-orange);
+}
+
+.srv-btn-outline:hover {
+    background-color: var(--primary-orange);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 119, 0, 0.3);
+}
+
+/* ============================
+   Seção 4 — CTA
+   ============================ */
+#srv-cta {
+    padding: 70px 24px 80px;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+#srv-cta h2 {
+    font-size: 2rem;
+    color: var(--bluh2);
+    margin-bottom: 12px;
+}
+
+#srv-cta > p {
+    font-size: 1.15rem;
+    color: var(--dark-grey);
+    margin-bottom: 36px;
+}
+
+.srv-cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* ============================
+   Menu — link ativo
+   ============================ */
+.menu-list a.active {
+    color: var(--primary-orange);
+    border-bottom: 2px solid var(--primary-orange);
+    padding-bottom: 3px;
+}
+
+/* ============================
+   Responsivo
+   ============================ */
+@media (max-width: 900px) {
+    .srv-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .srv-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #srv-intro h1 {
+        font-size: 1.8rem;
+    }
+
+    .srv-proof-grid {
+        gap: 30px;
+    }
+
+    .srv-proof-number {
+        font-size: 2.2rem;
+    }
+
+    .srv-cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}

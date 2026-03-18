@@ -80,8 +80,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Scroll suave para links de navegação ---
     document.querySelectorAll('.menu-list a').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault();
             const targetId = this.getAttribute('href');
+            // Só intercepta links âncora (começam com #)
+            if (!targetId.startsWith('#')) return;
+
+            e.preventDefault();
             // Se for o link para '#cases', rolar para '#carousel-section'
             const targetElement = (targetId === '#cases') ? document.querySelector('#carousel-section') : document.querySelector(targetId);
 
