@@ -48,12 +48,17 @@
     text-align: center;
 }
 
+html, body {
+    max-width: 100vw;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     line-height: 1.6;
     color: var(--dark-grey);
     background-color: var(--white);
-    overflow-x: hidden;
-    /* Evita scroll horizontal */
     font-size: 1.1rem;
 }
 
@@ -133,6 +138,8 @@ h2 {
     position: relative;
     z-index: 2;
     /* Garante que o container base do carrossel não encubra tudo */
+    max-width: 100vw;
+    overflow: hidden;
 }
 
 .carousel-wrapper {

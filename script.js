@@ -216,4 +216,67 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 150);
     }
 
+    // --- Animação dos Números (Cases) ---
+    const caseNumbers = document.querySelectorAll('.caseOrange');
+    let animatedCases = false;
+
+    const animateCounters = () => {
+        caseNumbers.forEach(el => {
+            const originalText = el.innerText;
+            
+            // Lógica para extrair e identificar K, % e +
+            let multiplier = 1;
+            if (originalText.toUpperCase().includes('K')) multiplier = 1000;
+            
+            // Extrai apenas os dígitos
+            const rawNumber = parseInt(originalText.replace(/\D/g, ''));
+            // Se falhar no parse, não anima
+            if (isNaN(rawNumber)) return;
+            
+            const target = rawNumber * multiplier;
+            const isPercent = originalText.includes('%');
+            const hasPlus = originalText.includes('+');
+
+            const duration = 2000; 
+            const frameRate = 1000 / 60;
+            const totalFrames = Math.round(duration / frameRate);
+            let frame = 0;
+
+            const updateCounter = () => {
+                frame++;
+                const progress = Math.min(frame / totalFrames, 1);
+                // Ease-out quad
+                const easeOut = 1 - (1 - progress) * (1 - progress);
+                const currentVal = Math.round(target * easeOut);
+                
+                let displayVal = currentVal;
+                let suffix = isPercent ? '%' : '';
+                let prefix = hasPlus ? '+' : '';
+
+                if (frame >= totalFrames) {
+                    el.innerText = originalText; // Garante o formato original no final
+                } else {
+                    el.innerText = `${prefix}${displayVal}${suffix}`;
+                }
+
+                if (frame < totalFrames) {
+                    requestAnimationFrame(updateCounter);
+                }
+            };
+            requestAnimationFrame(updateCounter);
+        });
+    };
+
+    const casesSection = document.getElementById('cases');
+    if (casesSection) {
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting && !animatedCases) {
+                animatedCases = true;
+                animateCounters();
+                observer.disconnect();
+            }
+        }, { threshold: 0.5 });
+        observer.observe(casesSection);
+    }
+
 });
