@@ -555,23 +555,87 @@ button {
 
 
 footer {
-    background-color: var(--verdeEscuro);
-    color: black;
+    background-color: var(--dark-grey);
+    color: var(--white);
     text-align: center;
-    padding: 30px 20px;
-    border-radius: 20px 20px 0 0;
+    padding: 0;
+    padding-bottom: 60px;
     margin-top: 50px;
-    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-arc-section {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 350px;
+    padding-top: 80px;
+}
+
+/* Arco laranja usando pseudo-elemento */
+.footer-arc-section::before {
+    content: '';
+    position: absolute;
+    bottom: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px;
+    height: 540px;
+    border: 3px solid var(--primary-orange);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.footer-logo {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    margin-top: -10px;
+}
+
+.footer-logo img {
+    height: 120%;
+    object-fit: contain;
+}
+
+.footer-labels {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 10px;
+    min-width: 180px;
+    z-index: 2;
+}
+
+.footer-labels span {
+    font-size: 1.1rem;
+    color: var(--white);
+    font-weight: 400;
+}
+
+.footer-labels-left {
+    text-align: left;
+    margin-right: 40px;
+}
+
+.footer-labels-right {
+    text-align: right;
+    margin-left: 40px;
 }
 
 footer a {
-    color: black;
+    color: var(--white);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 footer a:hover {
-    color: var(--laranja);
+    color: var(--primary-orange);
 }
 
 .hailton {
