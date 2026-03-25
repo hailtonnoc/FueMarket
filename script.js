@@ -282,4 +282,27 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(casesSection);
     }
 
+    // --- Menu Mobile Toggle ---
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const menu = document.querySelector('.menu');
+
+    if (mobileMenuToggle && menu) {
+        mobileMenuToggle.addEventListener('click', () => {
+            menu.classList.toggle('active');
+            if (menu.classList.contains('active')) {
+                mobileMenuToggle.innerHTML = '&#10005;'; // X
+            } else {
+                mobileMenuToggle.innerHTML = '&#9776;'; // Hamburger
+            }
+        });
+
+        const menuLinks = menu.querySelectorAll('a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.remove('active');
+                mobileMenuToggle.innerHTML = '&#9776;';
+            });
+        });
+    }
+
 });
