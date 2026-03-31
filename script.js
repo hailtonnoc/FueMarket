@@ -219,67 +219,188 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 150);
     }
 
-    // --- Animação dos Números (Cases) ---
-    const caseNumbers = document.querySelectorAll('.caseOrange');
-    let animatedCases = false;
+    // --- Cases Slider ---
+    const casesData = [
+        {
+            phoneBack:  'elementos/img/portfolio/celularis_case_mockups_36902.png',
+            phoneFront: 'elementos/img/portfolio/celularis_case_mockups_36901.png',
+            stat1Val: '+60%',  stat1Lbl: 'ALCANCE',
+            stat2Val: '+40%',  stat2Lbl: 'ENGAJAMENTO',
+            name:     '369 assessoria',
+            subtitle: 'Gestão de redes sociais e Digital Branding.',
+            trabalho: [
+                'Criação da identidade digital da marca',
+                'Estruturação de conteúdo',
+                'Crescimento orgânico inicial do perfil',
+                'Início da construção de audiência'
+            ],
+            resultado: '+34 seguidores.',
+            aumentos: [
+                'Presença digital da marca',
+                'Início do crescimento orgânico do público',
+                'Fluxo de conteúdo no Instagram'
+            ],
+            descricao: 'Gestão estratégica de conteúdo focada em alcance, engajamento e reconhecimento de marca.',
+            link: 'https://www.instagram.com/369assessoria'
+        },
+        {
+            phoneBack:  'elementos/img/portfolio/celularis_case_mockups_ouro02.png',
+            phoneFront: 'elementos/img/portfolio/celularis_case_mockups_ouro01.png',
+            stat1Val: '+120%', stat1Lbl: 'ALCANCE',
+            stat2Val: '+85%',  stat2Lbl: 'ENGAJAMENTO',
+            name:     'Ouro Chopp',
+            subtitle: 'Social Media e Produção de conteúdo.',
+            trabalho: [
+                'Criação de conteúdo para eventos',
+                'Gestão do perfil no Instagram',
+                'Produção de vídeos promocionais',
+                'Identidade visual digital'
+            ],
+            resultado: '+200 seguidores em 3 meses.',
+            aumentos: [
+                'Alcance orgânico nas redes',
+                'Engajamento nas publicações',
+                'Visibilidade local da marca'
+            ],
+            descricao: 'Estratégia de conteúdo focada em gastronomia e eventos locais.',
+            link: '#'
+        },
+        {
+            phoneBack:  'elementos/img/portfolio/celularis_case_mockups_snak02.png',
+            phoneFront: 'elementos/img/portfolio/celularis_case_mockups_snak01.png',
+            stat1Val: '+90%',  stat1Lbl: 'ALCANCE',
+            stat2Val: '+65%',  stat2Lbl: 'ENGAJAMENTO',
+            name:     'Snak',
+            subtitle: 'Social Media e Identidade Digital.',
+            trabalho: [
+                'Desenvolvimento da identidade visual',
+                'Criação de conteúdo recorrente',
+                'Estratégia de crescimento orgânico',
+                'Gestão de publicações'
+            ],
+            resultado: '+150 seguidores mensais.',
+            aumentos: [
+                'Reconhecimento da marca',
+                'Engajamento com o público',
+                'Consistência de conteúdo'
+            ],
+            descricao: 'Posicionamento digital estratégico para construção de audiência qualificada.',
+            link: '#'
+        },
+        {
+            phoneBack:  'elementos/img/portfolio/celularis_case_mockups_hailt02.png',
+            phoneFront: 'elementos/img/portfolio/celularis_case_mockups_hailt01.png',
+            stat1Val: '+200%', stat1Lbl: 'ALCANCE',
+            stat2Val: '+110%', stat2Lbl: 'ENGAJAMENTO',
+            name:     'Hailton Oliveira',
+            subtitle: 'Personal Branding e Identidade Digital.',
+            trabalho: [
+                'Construção da presença digital',
+                'Criação de portfólio online',
+                'Gestão de redes profissionais',
+                'Estratégia de personal branding'
+            ],
+            resultado: '+500 seguidores em 2 meses.',
+            aumentos: [
+                'Autoridade no mercado digital',
+                'Presença profissional online',
+                'Oportunidades de negócio'
+            ],
+            descricao: 'Desenvolvimento de marca pessoal focada em tecnologia e inovação.',
+            link: '#'
+        }
+    ];
 
-    const animateCounters = () => {
-        caseNumbers.forEach(el => {
-            const originalText = el.innerText;
-            
-            // Lógica para extrair e identificar K, % e +
-            let multiplier = 1;
-            if (originalText.toUpperCase().includes('K')) multiplier = 1000;
-            
-            // Extrai apenas os dígitos
-            const rawNumber = parseInt(originalText.replace(/\D/g, ''));
-            // Se falhar no parse, não anima
-            if (isNaN(rawNumber)) return;
-            
-            const target = rawNumber * multiplier;
-            const isPercent = originalText.includes('%');
-            const hasPlus = originalText.includes('+');
+    let currentCaseIndex = 0;
+    let isCaseAnimating = false;
 
-            const duration = 2000; 
-            const frameRate = 1000 / 60;
-            const totalFrames = Math.round(duration / frameRate);
-            let frame = 0;
+    const caseSlide      = document.querySelector('.case-slide');
+    const phoneBack      = document.querySelector('.phone-back');
+    const phoneFront     = document.querySelector('.phone-front');
+    const statVal1       = document.querySelector('.stat-val-1');
+    const statLbl1       = document.querySelector('.stat-lbl-1');
+    const statVal2       = document.querySelector('.stat-val-2');
+    const statLbl2       = document.querySelector('.stat-lbl-2');
+    const clientName     = document.querySelector('.case-client-name');
+    const caseSubtitle   = document.querySelector('.case-subtitle');
+    const trabalhoList   = document.querySelector('.case-trabalho-list');
+    const caseResultado  = document.querySelector('.case-resultado');
+    const aumentoList    = document.querySelector('.case-aumento-list');
+    const caseDescricao  = document.querySelector('.case-descricao');
+    const caseLink       = document.querySelector('.case-link');
+    const statsCard      = document.querySelector('.case-stats-card');
+    const centerCol      = document.querySelector('.case-center-col');
+    const rightCol       = document.querySelector('.case-right-col');
+    const arrowPrev      = document.querySelector('.case-arrow-prev');
+    const arrowNext      = document.querySelector('.case-arrow-next');
 
-            const updateCounter = () => {
-                frame++;
-                const progress = Math.min(frame / totalFrames, 1);
-                // Ease-out quad
-                const easeOut = 1 - (1 - progress) * (1 - progress);
-                const currentVal = Math.round(target * easeOut);
-                
-                let displayVal = currentVal;
-                let suffix = isPercent ? '%' : '';
-                let prefix = hasPlus ? '+' : '';
+    function populateCase(data) {
+        phoneBack.src        = data.phoneBack;
+        phoneFront.src       = data.phoneFront;
+        statVal1.textContent = data.stat1Val;
+        statLbl1.textContent = data.stat1Lbl;
+        statVal2.textContent = data.stat2Val;
+        statLbl2.textContent = data.stat2Lbl;
+        clientName.textContent  = data.name;
+        caseSubtitle.textContent = data.subtitle;
+        trabalhoList.innerHTML  = data.trabalho.map(t => `<li>${t}</li>`).join('');
+        caseResultado.textContent = data.resultado;
+        aumentoList.innerHTML   = data.aumentos.map(a => `<li>${a}</li>`).join('');
+        caseDescricao.textContent = data.descricao;
+        caseLink.href = data.link;
+    }
 
-                if (frame >= totalFrames) {
-                    el.innerText = originalText; // Garante o formato original no final
-                } else {
-                    el.innerText = `${prefix}${displayVal}${suffix}`;
-                }
+    function playCaseAnim() {
+        // Remove animation classes e força reflow para reiniciar
+        phoneBack.classList.remove('entering');
+        phoneFront.classList.remove('entering');
+        statsCard.classList.remove('rising');
+        centerCol.classList.remove('rising');
+        rightCol.classList.remove('rising');
 
-                if (frame < totalFrames) {
-                    requestAnimationFrame(updateCounter);
-                }
-            };
-            requestAnimationFrame(updateCounter);
-        });
-    };
+        void phoneBack.offsetWidth; // força reflow
+
+        phoneBack.classList.add('entering');
+        phoneFront.classList.add('entering');
+        statsCard.classList.add('rising');
+        centerCol.classList.add('rising');
+        rightCol.classList.add('rising');
+    }
+
+    function showCase(index) {
+        if (isCaseAnimating) return;
+        isCaseAnimating = true;
+        currentCaseIndex = ((index % casesData.length) + casesData.length) % casesData.length;
+        populateCase(casesData[currentCaseIndex]);
+        playCaseAnim();
+        setTimeout(() => { isCaseAnimating = false; }, 1500);
+    }
 
     const casesSection = document.getElementById('cases');
-    if (casesSection) {
-        const observer = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting && !animatedCases) {
-                animatedCases = true;
-                animateCounters();
-                observer.disconnect();
-            }
-        }, { threshold: 0.5 });
-        observer.observe(casesSection);
+    if (casesSection && caseSlide) {
+        populateCase(casesData[0]);
+
+        let casesEnteredOnce = false;
+        const casesObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    arrowPrev.classList.add('visible');
+                    arrowNext.classList.add('visible');
+                    if (!casesEnteredOnce) {
+                        casesEnteredOnce = true;
+                        playCaseAnim();
+                    }
+                } else {
+                    arrowPrev.classList.remove('visible');
+                    arrowNext.classList.remove('visible');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        casesObserver.observe(casesSection);
+
+        arrowPrev.addEventListener('click', () => showCase(currentCaseIndex - 1));
+        arrowNext.addEventListener('click', () => showCase(currentCaseIndex + 1));
     }
 
     // --- Menu Mobile Toggle ---

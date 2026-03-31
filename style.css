@@ -372,83 +372,365 @@ button {
 }
 
 /*_______________________________________*/
+/* Cases Slider */
 #cases {
-    display: inline-flex;
-}
-
-#cases>* {
-    margin: 0 20px;
-}
-
-.case-num>*>* {
-    display: inline-block;
-    font-size: 2.5rem;
-    margin: 0 10px;
-}
-
-.case-num>div {
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-start;
-    border-bottom: 2px solid;
-    border-image: linear-gradient(to right, var(--primary-orange) 0%, var(--primary-orange) 50%, var(--black) 50%, var(--black) 100%);
-    border-image-slice: 1;
-    width: fit-content;
-    margin: 0 auto 10px auto;
-    /* Ensures the border matches the text width */
-}
-
-.caseOrange {
-    color: var(--primary-orange);
-    font-size: 350%;
-}
-
-.caseBlack {
-    color: var(--black);
-    font-size: 140%;
-    margin-top: -10px;
-    width: 150px;
-}
-
-.case-imgs {
     position: relative;
-    width: 400px;
-    height: 550px;
-    margin: 40px auto;
+    padding: 60px 40px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: visible;
 }
 
-.case-imgs img {
+.case-slide {
+    display: grid;
+    grid-template-columns: 300px 1fr 250px;
+    gap: 40px;
+    align-items: start;
+    max-width: 1100px;
+    width: 100%;
+}
+
+/* --- Coluna Esquerda: Phones --- */
+.case-phones-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.case-phones {
+    position: relative;
+    width: 280px;
+    height: 370px;
+}
+
+.phone-back {
     position: absolute;
-    max-height: 500px;
-    width: 250px;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease-in-out;
-}
-
-.case-imgs img:nth-child(1) {
-    top: 90px;
-    left: 0;
+    width: 160px;
+    top: 25px;
+    left: 10px;
+    border-radius: 18px;
+    transform: rotate(-6deg);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
     z-index: 1;
+    object-fit: cover;
+    opacity: 0;
 }
 
-.case-imgs img:nth-child(2) {
-    top: 20px;
-    left: 75px;
+.phone-front {
+    position: absolute;
+    width: 172px;
+    top: 0;
+    right: 10px;
+    border-radius: 18px;
+    transform: rotate(4deg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
     z-index: 2;
+    object-fit: cover;
+    opacity: 0;
 }
 
-.case-imgs img:nth-child(3) {
-    top: 10px;
-    right: 0;
-    z-index: 3;
+.case-stats-card {
+    width: 100%;
+    background: var(--dark-blue);
+    color: var(--white);
+    border-radius: 12px;
+    padding: 14px 18px;
+    text-align: left;
+    opacity: 0;
 }
 
-.case-imgs img:hover {
-    transform: scale(1.05) rotate(0);
-    z-index: 4;
+.case-stats-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.78rem;
+    margin-bottom: 8px;
+    opacity: 0.82;
+    text-align: left;
+}
+
+.stats-hr {
+    flex: 1;
+    height: 1.5px;
+    background: var(--primary-orange);
+    display: inline-block;
+}
+
+.case-stats-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-val {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.1;
+    text-align: left;
+}
+
+.stat-lbl {
+    font-size: 0.6rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    opacity: 0.7;
+    text-align: left;
+}
+
+.stat-sep {
+    color: var(--primary-orange);
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin: 0 2px;
+    align-self: center;
+}
+
+/* --- Coluna Centro: Detalhes --- */
+.case-center-col {
+    text-align: left;
+    padding-top: 5px;
+    opacity: 0;
+}
+
+.case-section-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: var(--dark-grey);
+    margin-bottom: 8px;
+    text-align: left;
+}
+
+.case-hr {
+    width: 60px;
+    height: 2px;
+    background: var(--primary-orange);
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.case-client-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: left;
+}
+
+.case-client-name::after {
+    content: '';
+    width: 55px;
+    height: 2px;
+    background: var(--dark-grey);
+    flex-shrink: 0;
+}
+
+.case-subtitle {
+    font-size: 0.88rem;
+    color: var(--dark-grey);
+    margin-bottom: 16px;
+    text-align: left;
+}
+
+.case-col-title {
+    color: var(--primary-orange);
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-align: left;
+}
+
+.case-checklist {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 14px;
+}
+
+.case-checklist li {
+    position: relative;
+    padding-left: 20px;
+    font-size: 0.87rem;
+    color: var(--dark-grey);
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.case-checklist li::before {
+    content: '✓';
+    color: var(--primary-orange);
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+}
+
+.case-resultado {
+    font-size: 0.92rem;
+    color: var(--dark-grey);
+    text-align: left;
+}
+
+/* --- Coluna Direita: Aumentos --- */
+.case-right-col {
+    text-align: left;
+    padding-top: 5px;
+    opacity: 0;
+}
+
+.case-aumento-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 10px;
+}
+
+.aumento-icon {
+    color: var(--primary-orange);
+    font-size: 1rem;
+}
+
+.case-aumento-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 18px;
+}
+
+.case-aumento-list li {
+    position: relative;
+    padding-left: 20px;
+    font-size: 0.87rem;
+    color: var(--dark-grey);
+    margin-bottom: 6px;
+    text-align: left;
+}
+
+.case-aumento-list li::before {
+    content: '✓';
+    color: var(--primary-orange);
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+}
+
+.case-descricao {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--dark-blue);
+    margin-bottom: 14px;
+    text-align: left;
+    line-height: 1.5;
+}
+
+.case-link {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 5px;
+    font-size: 0.82rem;
+    color: var(--primary-orange);
+    text-decoration: underline;
+    text-align: left;
+    word-break: break-word;
+    line-height: 1.4;
+}
+
+/* --- Setas de Navegação --- */
+.case-arrow {
+    position: fixed;
+    top: 50%;
+    z-index: 500;
+    background: rgba(255, 255, 255, 0.92);
+    border: 2px solid var(--primary-orange);
+    color: var(--primary-orange);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease, background 0.2s ease, color 0.2s ease;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+    padding: 0;
+}
+
+.case-arrow.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.case-arrow:hover {
+    background: var(--primary-orange);
+    color: var(--white);
+}
+
+.case-arrow-prev {
+    left: 14px;
+    animation: arrowFloatLeft 2.2s ease-in-out infinite;
+}
+
+.case-arrow-next {
+    right: 14px;
+    animation: arrowFloatRight 2.2s ease-in-out infinite;
+}
+
+@keyframes arrowFloatLeft {
+    0%, 100% { transform: translateY(-50%) translateX(0); }
+    50%       { transform: translateY(-50%) translateX(-6px); }
+}
+
+@keyframes arrowFloatRight {
+    0%, 100% { transform: translateY(-50%) translateX(0); }
+    50%       { transform: translateY(-50%) translateX(6px); }
+}
+
+/* --- Animações de Transição --- */
+@keyframes phoneEnterLeft {
+    from { transform: translateX(-80vw) rotate(-6deg); opacity: 0; }
+    to   { transform: rotate(-6deg);                   opacity: 1; }
+}
+
+@keyframes phoneEnterRight {
+    from { transform: translateX(80vw) rotate(4deg); opacity: 0; }
+    to   { transform: rotate(4deg);                  opacity: 1; }
+}
+
+@keyframes caseInfoRise {
+    from { transform: translateY(45px); opacity: 0; }
+    to   { transform: translateY(0);    opacity: 1; }
+}
+
+.phone-back.entering {
+    animation: phoneEnterLeft 0.75s cubic-bezier(0.25, 1, 0.5, 1) both;
+}
+
+.phone-front.entering {
+    animation: phoneEnterRight 0.75s cubic-bezier(0.25, 1, 0.5, 1) 0.1s both;
+}
+
+.case-stats-card.rising {
+    animation: caseInfoRise 0.5s ease-out 0.6s both;
+}
+
+.case-center-col.rising {
+    animation: caseInfoRise 0.5s ease-out 0.72s both;
+}
+
+.case-right-col.rising {
+    animation: caseInfoRise 0.5s ease-out 0.88s both;
 }
 
 /* Animação issoNaoEObvio */
@@ -982,51 +1264,43 @@ footer a:hover {
         animation: dropForm5Mob 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
     }
 
-    /* Cases (Números e Imagens Empilhadas) */
+    /* Cases Slider */
     #cases {
-        display: flex;
-        flex-direction: column;
+        padding: 40px 20px;
+    }
+
+    .case-slide {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .case-phones-col {
         align-items: center;
     }
 
-    .case-num>div {
-        justify-content: center;
-        width: 100%;
+    .case-phones {
+        width: 240px;
+        height: 370px;
     }
 
-    .caseOrange {
-        font-size: 2.5rem;
+    .phone-back {
+        width: 128px;
     }
 
-    .caseBlack {
-        font-size: 1.1rem;
-        width: auto;
+    .phone-front {
+        width: 138px;
     }
 
-    .case-imgs {
-        width: 100%;
-        max-width: 340px;
-        height: 450px;
-        margin-top: 30px;
+    .case-stats-card {
+        width: 240px;
     }
 
-    .case-imgs img {
-        width: 180px;
+    .case-arrow-prev {
+        left: 6px;
     }
 
-    .case-imgs img:nth-child(1) {
-        top: 60px;
-        left: 0;
-    }
-
-    .case-imgs img:nth-child(2) {
-        top: 20px;
-        left: 70px;
-    }
-
-    .case-imgs img:nth-child(3) {
-        top: 0;
-        right: 0;
+    .case-arrow-next {
+        right: 6px;
     }
 
     /* Contato Links */

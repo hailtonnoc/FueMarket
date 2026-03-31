@@ -126,21 +126,55 @@
     </section>
 
     <section id="cases">
-        <div class="case-num">
-            <div>
-                <p class="caseOrange">+1K</p>
-                <p class="caseBlack">Conteúdos produzidos</p>
+        <button class="case-arrow case-arrow-prev" aria-label="Case anterior">&#8592;</button>
+        <button class="case-arrow case-arrow-next" aria-label="Próximo case">&#8594;</button>
+
+        <div class="case-slide">
+            <!-- Esquerda: phones + stats -->
+            <div class="case-phones-col">
+                <div class="case-phones">
+                    <img class="phone-back" src="" alt="">
+                    <img class="phone-front" src="" alt="">
+                </div>
+                <div class="case-stats-card">
+                    <div class="case-stats-title">Case de sucesso <span class="stats-hr"></span></div>
+                    <div class="case-stats-row">
+                        <div class="stat-item">
+                            <span class="stat-val stat-val-1"></span>
+                            <span class="stat-lbl stat-lbl-1"></span>
+                        </div>
+                        <span class="stat-sep">|</span>
+                        <div class="stat-item">
+                            <span class="stat-val stat-val-2"></span>
+                            <span class="stat-lbl stat-lbl-2"></span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div>
-                <p class="caseOrange">98%</p>
-                <p class="caseBlack">Renovam contrato</p>
+
+            <!-- Centro: detalhes do case -->
+            <div class="case-center-col">
+                <div class="case-section-label">Case de sucesso <span class="case-hr"></span></div>
+                <div class="case-client-name"></div>
+                <p class="case-subtitle"></p>
+                <h4 class="case-col-title">Trabalho realizado:</h4>
+                <ul class="case-checklist case-trabalho-list"></ul>
+                <h4 class="case-col-title">Resultados:</h4>
+                <p class="case-resultado"></p>
             </div>
-            <button>Fale conosco</button>
-        </div>
-        <div class="case-imgs">
-            <img src="elementos/img/portfolio/A369.png" alt="Case 1">
-            <img src="elementos/img/portfolio/CatalogoBanhoetosa.png" alt="Case 2">
-            <img src="elementos/img/portfolio/OuroChoppSpot.png" alt="Case 3">
+
+            <!-- Direita: aumentos + descrição -->
+            <div class="case-right-col">
+                <div class="case-aumento-header">
+                    <span class="aumento-icon">&#9745;</span>
+                    <h4 class="case-col-title">Aumento de:</h4>
+                </div>
+                <ul class="case-aumento-list"></ul>
+                <p class="case-descricao"></p>
+                <a href="#" class="case-link" target="_blank" rel="noopener">
+                    <span class="case-link-icon">&#128269;</span> Veja o resultado diretamente no perfil da marca.
+                </a>
+            </div>
         </div>
     </section>
 
