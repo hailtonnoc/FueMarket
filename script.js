@@ -222,8 +222,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Cases Slider ---
     const casesData = [
         {
-            phoneBack:  'elementos/img/portfolio/celularis_case_mockups_36902.png',
-            phoneFront: 'elementos/img/portfolio/celularis_case_mockups_36901.png',
+            phoneBack:  'elementos/img/portfolio/mock_369_2.png',
+            phoneFront: 'elementos/img/portfolio/mock_369_1.png',
             stat1Val: '+60%',  stat1Lbl: 'ALCANCE',
             stat2Val: '+40%',  stat2Lbl: 'ENGAJAMENTO',
             name:     '369 assessoria',
@@ -244,8 +244,8 @@ document.addEventListener('DOMContentLoaded', () => {
             link: 'https://www.instagram.com/369assessoria'
         },
         {
-            phoneBack:  'elementos/img/portfolio/celularis_case_mockups_ouro02.png',
-            phoneFront: 'elementos/img/portfolio/celularis_case_mockups_ouro01.png',
+            phoneBack:  'elementos/img/portfolio/mock_OURO_2.png',
+            phoneFront: 'elementos/img/portfolio/mock_OURO_1.png',
             stat1Val: '+120%', stat1Lbl: 'ALCANCE',
             stat2Val: '+85%',  stat2Lbl: 'ENGAJAMENTO',
             name:     'Ouro Chopp',
@@ -266,11 +266,11 @@ document.addEventListener('DOMContentLoaded', () => {
             link: '#'
         },
         {
-            phoneBack:  'elementos/img/portfolio/celularis_case_mockups_snak02.png',
-            phoneFront: 'elementos/img/portfolio/celularis_case_mockups_snak01.png',
+            phoneBack:  'elementos/img/portfolio/mock_SNACK_2.png',
+            phoneFront: 'elementos/img/portfolio/mock_SNACK_1.png',
             stat1Val: '+90%',  stat1Lbl: 'ALCANCE',
             stat2Val: '+65%',  stat2Lbl: 'ENGAJAMENTO',
-            name:     'Snak',
+            name:     'Snack Show',
             subtitle: 'Social Media e Identidade Digital.',
             trabalho: [
                 'Desenvolvimento da identidade visual',
@@ -288,8 +288,8 @@ document.addEventListener('DOMContentLoaded', () => {
             link: '#'
         },
         {
-            phoneBack:  'elementos/img/portfolio/celularis_case_mockups_hailt02.png',
-            phoneFront: 'elementos/img/portfolio/celularis_case_mockups_hailt01.png',
+            phoneBack:  'elementos/img/portfolio/mock_HAIL_2.png',
+            phoneFront: 'elementos/img/portfolio/mock_HAIL_1.png',
             stat1Val: '+200%', stat1Lbl: 'ALCANCE',
             stat2Val: '+110%', stat2Lbl: 'ENGAJAMENTO',
             name:     'Hailton Oliveira',
