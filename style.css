@@ -1433,3 +1433,36 @@ footer a:hover {
         transform: translateY(0);
     }
 }
+
+/* ============================
+   Parceiros Strip
+   ============================ */
+.parceiros-strip {
+    overflow: hidden;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    padding: 24px 0;
+}
+
+.parceiros-track {
+    display: flex;
+    gap: 80px;
+    width: max-content;
+    animation: parceiros-scroll 20s linear infinite;
+}
+
+.parceiros-track img {
+    height: 200px;
+    width: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+@keyframes parceiros-scroll {
+    from { transform: translateX(-50%); }
+    to   { transform: translateX(0); }
+}
