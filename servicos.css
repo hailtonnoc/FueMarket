@@ -1,6 +1,178 @@
 /* servicos.css — Estilos exclusivos da página de serviços */
 
 /* ============================
+   Pacotes
+   ============================ */
+.pacotes {
+    display: grid;
+    grid-template-columns: repeat(3, 300px);
+    gap: 24px;
+    justify-content: center;
+    padding: 30px 24px 50px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Wrapper externo — não tem fundo, só posiciona desc acima do body */
+.pacote-card {
+    position: relative;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Linha superior: descrição em itálico */
+.pacote-topo {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    padding: 0 4px;
+    margin-bottom: 4px;
+    position: relative;
+    z-index: 2;
+}
+
+.pacote-fox {
+    display: none;
+}
+
+.pacote-desc {
+    font-size: 0.62rem;
+    color: var(--dark-grey);
+    font-style: italic;
+    line-height: 1.35;
+    margin: 0;
+    padding-bottom: 4px;
+    flex: 1;
+}
+
+/* Ribbon "mais vendido" acima do topo */
+.pacote-ancora {
+    display: block;
+    text-align: center;
+    background: var(--primary-orange);
+    color: var(--white);
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 4px 0;
+    border-radius: 6px 6px 0 0;
+    letter-spacing: 0.03em;
+    margin-bottom: 4px;
+}
+
+/* Corpo branco do card */
+.pacote-body {
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.09);
+    padding: 18px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    position: relative;
+    z-index: 1;
+}
+
+.pacote-destaque .pacote-body {
+    box-shadow: 0 6px 28px rgba(255,119,0,0.18);
+    border: 2px solid var(--primary-orange);
+}
+
+.pacote-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.pacote-nome {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--dark-blue);
+}
+
+.pacote-badge {
+    font-size: 0.68rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+}
+
+.badge-neutro      { background: #f0f0f0; color: #666; }
+.badge-ativo       { background: var(--primary-orange); color: var(--white); }
+.badge-crescimento { background: #fff3cd; color: #856404; }
+.badge-performance { background: #d4edda; color: #155724; }
+
+.pacote-preco {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--dark-blue);
+    line-height: 1.1;
+    margin-bottom: 3px;
+}
+
+.pacote-preco small {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--dark-grey);
+    line-height: 1.4;
+}
+
+.pacote-sub {
+    font-size: 0.8rem;
+    color: var(--dark-grey);
+    margin: 0 0 10px;
+}
+
+.pacote-hr {
+    border: none;
+    border-top: 1px solid #e8e8e8;
+    margin: 8px 0 12px;
+}
+
+.pacote-itens {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.pacote-itens li {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.82rem;
+    color: var(--dark-grey);
+}
+
+.pacote-itens li strong {
+    color: var(--dark-blue);
+    font-weight: 700;
+    text-align: right;
+}
+
+.pacote-btn {
+    margin-top: auto;
+    display: block;
+    text-align: center;
+    border: 2px solid var(--primary-orange);
+    color: var(--primary-orange);
+    border-radius: 30px;
+    padding: 9px 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.pacote-btn:hover {
+    background: var(--primary-orange);
+    color: var(--white);
+}
+
+/* ============================
    Seção 1 — Introdução
    ============================ */
 #srv-intro {
@@ -17,7 +189,7 @@
 }
 
 #srv-intro p {
-    font-size: 1.15rem;
+    font-size: 0.85rem;
     color: var(--dark-grey);
     line-height: 1.7;
     text-align: center;
