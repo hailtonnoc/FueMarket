@@ -91,47 +91,76 @@
 }
 
 .mvv-card {
-    background: var(--white);
-    border-radius: 50%; /* Formato de bola */
-    width: 300px; 
+    width: 300px;
     height: 300px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* Sombra suave */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 0 auto;
+    perspective: 900px;
+    cursor: pointer;
+}
+
+.mvv-card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 50%;
+}
+
+@media (hover: hover) {
+    .mvv-card:hover .mvv-card-inner {
+        transform: rotateY(180deg);
+    }
+}
+
+.mvv-card.flipped .mvv-card-inner {
+    transform: rotateY(180deg);
+}
+
+.mvv-card-front,
+.mvv-card-back {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin: 0 auto;
-    padding: 20px;
+    padding: 24px;
     box-sizing: border-box;
 }
 
-.mvv-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 36px rgba(255, 119, 0, 0.15); /* Sombra laranjada ao passar o mouse */
+.mvv-card-front {
+    background: var(--white);
+    box-shadow: 0 4px 20px rgba(255, 119, 0, 0.12);
 }
 
-.mvv-card img {
-    width: 110px;
-    height: 110px;
-    object-fit: contain; /* Não corta a imagem interna */
-    margin-bottom: 10px;
+.mvv-card-front img {
+    width: 143px;
+    height: 143px;
+    object-fit: contain;
 }
 
-.mvv-card h3 {
+.mvv-card-back {
+    background-color: white;
+    transform: rotateY(180deg);
+    box-shadow: 0 4px 20px rgba(255, 119, 0, 0.25);
+}
+
+.mvv-card-back h3 {
     font-size: 1.3rem;
     color: var(--primary-orange);
-    margin: 0 0 10px 0;
+    margin: 0 0 12px 0;
 }
 
-.mvv-card p {
-    font-size: 0.9rem;
+.mvv-card-back p {
+    font-size: 0.88rem;
     color: var(--dark-grey);
-    line-height: 1.4;
+    line-height: 1.5;
     margin: 0;
-    padding: 0 15px;
 }
 
 /* ============================

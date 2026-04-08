@@ -62,23 +62,41 @@
         <h2>O que nos guia</h2>
         <div class="mvv-grid">
             <div class="mvv-card">
-                <img src="elementos/img/marca/Missão Fue.png" alt="Missão">
-                <h3>Missão</h3>
-                <p>Ser referência global de marketing, fazer a diferença nos negócios
-                    e ser reconhecida pelas soluções mais eficazes.</p>
+                <div class="mvv-card-inner">
+                    <div class="mvv-card-front">
+                        <img src="elementos/img/marca/Missão Fue.png" alt="Missão">
+                    </div>
+                    <div class="mvv-card-back">
+                        <h3>Missão</h3>
+                        <p>Ser referência global de marketing, fazer a diferença nos negócios
+                            e ser reconhecida pelas soluções mais eficazes.</p>
+                    </div>
+                </div>
             </div>
             <div class="mvv-card">
-                <img src="elementos/img/marca/Visão fue.png" alt="Visão">
-                <h3>Visão</h3>
-                <p>Transmitir a beleza das coisas que passam despercebidas.
-                    Fazer as pessoas verem seu valor e importância.
-                    Gerar valor ao público.</p>
+                <div class="mvv-card-inner">
+                    <div class="mvv-card-front">
+                        <img src="elementos/img/marca/Visão fue.png" alt="Visão">
+                    </div>
+                    <div class="mvv-card-back">
+                        <h3>Visão</h3>
+                        <p>Transmitir a beleza das coisas que passam despercebidas.
+                            Fazer as pessoas verem seu valor e importância.
+                            Gerar valor ao público.</p>
+                    </div>
+                </div>
             </div>
             <div class="mvv-card">
-                <img src="elementos/img/marca/Valores Fue.png" alt="Valores">
-                <h3>Valores</h3>
-                <p>Eficiência, inovação, flexibilidade, assertividade,
-                    resultados, ética e transparência.</p>
+                <div class="mvv-card-inner">
+                    <div class="mvv-card-front">
+                        <img src="elementos/img/marca/Valores Fue.png" alt="Valores">
+                    </div>
+                    <div class="mvv-card-back">
+                        <h3>Valores</h3>
+                        <p>Eficiência, inovação, flexibilidade, assertividade,
+                            resultados, ética e transparência.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -181,6 +199,41 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        (function () {
+            var cards = Array.from(document.querySelectorAll('.mvv-card'));
+            var isTouch = window.matchMedia('(hover: none)').matches;
+
+            if (isTouch) {
+                cards.forEach(function (card) {
+                    card.addEventListener('click', function () {
+                        card.classList.toggle('flipped');
+                    });
+                });
+            }
+
+            var grid = document.querySelector('.mvv-grid');
+            if (grid) {
+                var observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            cards.forEach(function (card, i) {
+                                setTimeout(function () {
+                                    card.classList.add('flipped');
+                                    setTimeout(function () {
+                                        card.classList.remove('flipped');
+                                    }, 1100);
+                                }, i * 350);
+                            });
+                            observer.unobserve(grid);
+                        }
+                    });
+                }, { threshold: 0.4 });
+                observer.observe(grid);
+            }
+        })();
+    </script>
 
     <div class="hailton">
         <a href="https://hailton-oliveira.vercel.app/" target="_blank" rel="noopener noreferrer">Desenvolvido por
