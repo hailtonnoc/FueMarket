@@ -108,7 +108,7 @@ header {
 .menu-list {
     list-style: none;
     display: flex;
-    gap: 30px;
+    gap: 24px;
 }
 
 .menu-list a {
@@ -122,6 +122,32 @@ header {
 
 .menu-list a:hover {
     color: var(--primary-orange);
+}
+
+.menu-social-divider {
+    width: 1px;
+    height: 18px;
+    background-color: rgba(0, 0, 0, 0.18);
+    align-self: center;
+    margin: 0 4px;
+}
+
+.menu-social-link {
+    display: flex;
+    align-items: center;
+    color: var(--primary-orange) !important;
+    font-size: 1.2rem;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.menu-social-link svg {
+    width: 21px;
+    height: 21px;
+}
+
+.menu-social-link:hover {
+    opacity: 0.7;
+    transform: translateY(-2px);
 }
 
 /* Título Principal */
