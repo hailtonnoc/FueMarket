@@ -219,97 +219,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 150);
     }
 
-    // --- Cases Slider ---
-    const casesData = [
-        {
-            phoneBack:  'elementos/img/portfolio/mock_369_2.png',
-            phoneFront: 'elementos/img/portfolio/mock_369_1.png',
-            stat1Val: '+60%',  stat1Lbl: 'ALCANCE',
-            stat2Val: '+40%',  stat2Lbl: 'ENGAJAMENTO',
-            name:     '369 assessoria',
-            subtitle: 'Gestão de redes sociais e Digital Branding.',
-            trabalho: [
-                'Criação da identidade digital da marca',
-                'Estruturação de conteúdo',
-                'Crescimento orgânico inicial do perfil',
-                'Início da construção de audiência'
-            ],
-            resultado: '+34 seguidores.',
-            aumentos: [
-                'Presença digital da marca',
-                'Início do crescimento orgânico do público',
-                'Fluxo de conteúdo no Instagram'
-            ],
-            descricao: 'Gestão estratégica de conteúdo focada em alcance, engajamento e reconhecimento de marca.',
-            link: 'https://www.instagram.com/369assessoria'
-        },
-        {
-            phoneBack:  'elementos/img/portfolio/mock_OURO_2.png',
-            phoneFront: 'elementos/img/portfolio/mock_OURO_1.png',
-            stat1Val: '+120%', stat1Lbl: 'ALCANCE',
-            stat2Val: '+85%',  stat2Lbl: 'ENGAJAMENTO',
-            name:     'Ouro Chopp',
-            subtitle: 'Social Media e Produção de conteúdo.',
-            trabalho: [
-                'Criação de conteúdo para eventos',
-                'Gestão do perfil no Instagram',
-                'Produção de vídeos promocionais',
-                'Identidade visual digital'
-            ],
-            resultado: '+200 seguidores em 3 meses.',
-            aumentos: [
-                'Alcance orgânico nas redes',
-                'Engajamento nas publicações',
-                'Visibilidade local da marca'
-            ],
-            descricao: 'Estratégia de conteúdo focada em gastronomia e eventos locais.',
-            link: '#'
-        },
-        {
-            phoneBack:  'elementos/img/portfolio/mock_SNACK_2.png',
-            phoneFront: 'elementos/img/portfolio/mock_SNACK_1.png',
-            stat1Val: '+90%',  stat1Lbl: 'ALCANCE',
-            stat2Val: '+65%',  stat2Lbl: 'ENGAJAMENTO',
-            name:     'Snack Show',
-            subtitle: 'Social Media e Identidade Digital.',
-            trabalho: [
-                'Desenvolvimento da identidade visual',
-                'Criação de conteúdo recorrente',
-                'Estratégia de crescimento orgânico',
-                'Gestão de publicações'
-            ],
-            resultado: '+150 seguidores mensais.',
-            aumentos: [
-                'Reconhecimento da marca',
-                'Engajamento com o público',
-                'Consistência de conteúdo'
-            ],
-            descricao: 'Posicionamento digital estratégico para construção de audiência qualificada.',
-            link: '#'
-        },
-        {
-            phoneBack:  'elementos/img/portfolio/mock_HAIL_2.png',
-            phoneFront: 'elementos/img/portfolio/mock_HAIL_1.png',
-            stat1Val: '+200%', stat1Lbl: 'ALCANCE',
-            stat2Val: '+110%', stat2Lbl: 'ENGAJAMENTO',
-            name:     'Hailton Oliveira',
-            subtitle: 'Personal Branding e Identidade Digital.',
-            trabalho: [
-                'Construção da presença digital',
-                'Criação de portfólio online',
-                'Gestão de redes profissionais',
-                'Estratégia de personal branding'
-            ],
-            resultado: '+500 seguidores em 2 meses.',
-            aumentos: [
-                'Autoridade no mercado digital',
-                'Presença profissional online',
-                'Oportunidades de negócio'
-            ],
-            descricao: 'Desenvolvimento de marca pessoal focada em tecnologia e inovação.',
-            link: '#'
-        }
-    ];
+    // --- Cases Slider — dados lidos do HTML (#cases-data) ---
+    const casesData = Array.from(document.querySelectorAll('#cases-data .case-data')).map(el => ({
+        phoneBack:  el.dataset.phoneBack,
+        phoneFront: el.dataset.phoneFront,
+        stat1Val:   el.dataset.stat1Val,
+        stat1Lbl:   el.dataset.stat1Lbl,
+        stat2Val:   el.dataset.stat2Val,
+        stat2Lbl:   el.dataset.stat2Lbl,
+        name:       el.dataset.name,
+        subtitle:   el.dataset.subtitle,
+        trabalho:   Array.from(el.querySelectorAll('.case-data-trabalho li')).map(li => li.textContent),
+        resultado:  el.dataset.resultado,
+        aumentos:   Array.from(el.querySelectorAll('.case-data-aumentos li')).map(li => li.textContent),
+        descricao:  el.dataset.descricao,
+        link:       el.dataset.link
+    }));
 
     let currentCaseIndex = 0;
     let isCaseAnimating = false;
