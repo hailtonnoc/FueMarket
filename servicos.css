@@ -43,7 +43,9 @@
 .pacote-ancora {
     display: block;
     text-align: center;
-    background: var(--primary-orange);
+    background: linear-gradient(160deg, #1a0800, #7a1e00, #ff4400, #ff7700, #ffa705, #ff7700, #7a1e00, #1a0800);
+    background-size: 300% 300%;
+    animation: fogo-burning 4s ease infinite;
     color: var(--white);
     font-size: 0.65rem;
     font-weight: 700;
@@ -51,6 +53,7 @@
     border-radius: 0 0 14px 14px;
     letter-spacing: 0.04em;
     margin: 12px -20px -20px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.4);
 }
 
 /* Corpo branco — altura igual para todos via subgrid/stretch */
@@ -72,9 +75,17 @@
 
 /* Fogo — card premium */
 .pacote-premium .pacote-body {
-    background: linear-gradient(160deg, #0a1128 0%, #1a2a5e 100%);
-    box-shadow: 0 8px 32px rgba(10,17,40,0.35);
+    background: linear-gradient(160deg, #1a0800, #7a1e00, #ff4400, #ff7700, #ffa705, #ff7700, #7a1e00, #1a0800);
+    background-size: 300% 300%;
+    animation: fogo-burning 4s ease infinite;
+    box-shadow: 0 8px 40px rgba(255, 80, 0, 0.45);
     border: 2px solid #FFa705;
+}
+
+@keyframes fogo-burning {
+    0%   { background-position: 0% 100%; }
+    50%  { background-position: 100% 0%; }
+    100% { background-position: 0% 100%; }
 }
 
 .pacote-premium .pacote-nome,
@@ -84,11 +95,13 @@
 
 .pacote-premium .pacote-sub,
 .pacote-premium .pacote-itens li {
-    color: rgba(255,255,255,0.75);
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
 }
 
 .pacote-premium .pacote-itens li strong {
-    color: var(--burned-yellow);
+    color: #ffffff !important;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
 }
 
 .pacote-premium .pacote-hr {
