@@ -5,18 +5,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Conheça Jad Vieira — empreendedora de Marketing Digital com anos de experiência em franquias e e-commerces. Conheça sua missão, visão e valores profissionais.">
-    <meta name="keywords" content="Jad Vieira, Fue Market, Sobre nós, Especialista em Marketing Digital, Empreendedora">
-    <meta name="author" content="Jad Vieira">
-    <meta property="og:title" content="Sobre — Fue Marketing Digital">
+        content="Conheça a FUE Market — agência de social media para pequenos negócios em São Paulo, fundada por Jad Vieira (Diretora Criativa) e Hailton Noc (CTO).">
+    <meta name="keywords" content="FUE Market, Jad Vieira, Hailton Noc, Sobre nós, Agência Social Media SP, Marketing Digital pequenos negócios">
+    <meta name="author" content="FUE Market">
+    <meta property="og:title" content="Sobre — FUE Market · Agência de Social Media SP">
     <meta property="og:description"
-        content="Sou Jad Vieira, profissional dedicada a desenvolver soluções relevantes e mensuráveis para o seu negócio no ambiente digital.">
-    <meta property="og:type" content="profile">
-    <title>Sobre — Fue Market</title>
+        content="Somos a FUE Market, agência de social media para pequenos negócios em SP. Conheça a dupla por trás da agência e o que nos move.">
+    <meta property="og:type" content="website">
+    <title>Sobre — FUE Market · Agência de Social Media SP</title>
     <link rel="icon" href="elementos/img/marca/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="servicos.css">
     <link rel="stylesheet" href="sobre.css">
+    <style>
+        .sobre-role {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            opacity: 0.6;
+            margin-bottom: 0.25rem;
+        }
+        .sobre-intro-reverse {
+            flex-direction: row-reverse;
+        }
+        @media (max-width: 768px) {
+            .sobre-intro-reverse {
+                flex-direction: column;
+            }
+        }
+        .sobre-photo-hailton {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 0.05em;
+        }
+        .sobre-photo-hailton span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+        .srv-case-encerrado .srv-case-year {
+            font-size: 0.78rem;
+            opacity: 0.7;
+        }
+    </style>
 </head>
 
 <body>
@@ -42,23 +81,44 @@
         </div>
     </header>
 
-    <!-- Seção 1 — Apresentação pessoal -->
+    <!-- Seção 1 — Apresentação da dupla fundadora -->
     <section id="sobre-intro">
+
+        <!-- Jad Vieira — Diretora Criativa -->
         <div class="sobre-intro-content">
             <div class="sobre-photo">
                 <div class="sobre-photo-placeholder">
-                    <span><img src="elementos/img/marca/JDsobre.jpg" alt="Fue Market Logo"></span>
+                    <span><img src="elementos/img/marca/JDsobre.jpg" alt="Jad Vieira — Co-fundadora e Diretora Criativa da FUE Market"></span>
                 </div>
             </div>
             <div class="sobre-intro-text">
-                <h1>Olá, sou Jad Vieira</h1>
-                <p>Empreendedora de Marketing Digital, uma profissional dedicada e competente
-                    que está constantemente se especializando na área e desenvolvendo
-                    <strong>soluções relevantes e mensuráveis</strong> nos negócios.
+                <p class="sobre-role">Co-fundadora &amp; Diretora Criativa</p>
+                <h1>Jad Vieira</h1>
+                <p>Empreendedora de Marketing Digital dedicada a transformar pequenos negócios em
+                    referências no digital. Estratégia, criatividade e entrega consistente são
+                    a base do trabalho que construímos na FUE Market.
                 </p>
-                <p class="sobre-invite">Me conte sobre seu negócio e eu apresento ele ao mundo 🌎🧡</p>
+                <p class="sobre-invite">Conte sobre seu negócio — a gente apresenta ele ao mundo 🌎🧡</p>
             </div>
         </div>
+
+        <!-- Hailton Noc — CTO -->
+        <div class="sobre-intro-content sobre-intro-reverse">
+            <div class="sobre-intro-text">
+                <p class="sobre-role">Co-fundador &amp; CTO</p>
+                <h2>Hailton Noc</h2>
+                <p>Desenvolvedor full-stack e a tecnologia por trás de cada presença digital
+                    que a FUE Market constrói. De sites a sistemas, garante que a estratégia
+                    criativa se converta em resultado real e mensurável.
+                </p>
+            </div>
+            <div class="sobre-photo">
+                <div class="sobre-photo-placeholder sobre-photo-hailton">
+                    <span>HN</span>
+                </div>
+            </div>
+        </div>
+
     </section>
 
     <!-- Seção 2 — Missão, Visão e Valores -->
@@ -146,7 +206,7 @@
 
     <!-- Seção 4 — Hard Skills e Soft Skills -->
     <section id="sobre-skills">
-        <h2>Minhas habilidades</h2>
+        <h2>Nossas habilidades</h2>
         <div class="skills-container">
             <div class="skills-group">
                 <h3>Hard Skills</h3>
@@ -176,7 +236,7 @@
     <!-- Seção 5 — CTA -->
     <section id="sobre-cta">
         <h2>Vamos começar essa parceria?</h2>
-        <p>Estou pronta para entender o seu negócio e construir algo incrível juntos.</p>
+        <p>Estamos prontos para entender o seu negócio e construir algo incrível juntos.</p>
         <div class="sobre-cta-buttons">
             <a href="https://wa.me/5511979645256" target="_blank" rel="noopener" class="srv-btn srv-btn-whatsapp">
                 💬 Falar no WhatsApp
@@ -238,6 +298,7 @@
             }
         })();
     </script>
+    <script src="script.js"></script>
 
     <div class="hailton">
         <a href="https://hailton-oliveira.vercel.app/" target="_blank" rel="noopener noreferrer">Desenvolvido por

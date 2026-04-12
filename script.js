@@ -84,30 +84,31 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Eventos de Mouse
-    carouselContainer.addEventListener('mousedown', (e) => {
-        handleStart(e.clientX);
-        e.preventDefault();
-    });
+    // Eventos de Mouse e Touch — só registra se o carrossel existir na página
+    if (carouselContainer) {
+        carouselContainer.addEventListener('mousedown', (e) => {
+            handleStart(e.clientX);
+            e.preventDefault();
+        });
 
-    document.addEventListener('mousemove', (e) => {
-        handleMove(e.clientX);
-    });
+        document.addEventListener('mousemove', (e) => {
+            handleMove(e.clientX);
+        });
 
-    document.addEventListener('mouseup', handleEnd);
-    document.addEventListener('mouseleave', handleEnd);
+        document.addEventListener('mouseup', handleEnd);
+        document.addEventListener('mouseleave', handleEnd);
 
-    // Eventos de Touch (Mobile)
-    carouselContainer.addEventListener('touchstart', (e) => {
-        handleStart(e.touches[0].clientX);
-    }, { passive: true });
+        carouselContainer.addEventListener('touchstart', (e) => {
+            handleStart(e.touches[0].clientX);
+        }, { passive: true });
 
-    document.addEventListener('touchmove', (e) => {
-        handleMove(e.touches[0].clientX);
-    }, { passive: true });
+        document.addEventListener('touchmove', (e) => {
+            handleMove(e.touches[0].clientX);
+        }, { passive: true });
 
-    document.addEventListener('touchend', handleEnd);
-    document.addEventListener('touchcancel', handleEnd);
+        document.addEventListener('touchend', handleEnd);
+        document.addEventListener('touchcancel', handleEnd);
+    }
 
 
     // --- Scroll suave para links de navegação ---
