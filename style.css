@@ -558,6 +558,27 @@ button {
     flex-shrink: 0;
 }
 
+.parceiros-section-label {
+    margin: 4%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.80rem;
+    color: var(--dark-grey);
+    margin-bottom: 16px;
+    text-align: left;
+    width: 100%;
+    max-width: 1100px;
+}
+
+.parceiros-hr {
+    width: 60%;
+    height: 2px;
+    background: var(--primary-orange);
+    display: inline-block;
+    flex-shrink: 0;
+}
+
 .case-client-name {
     font-size: 1.25rem;
     font-weight: 700;
