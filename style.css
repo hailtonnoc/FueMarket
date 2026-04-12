@@ -403,8 +403,9 @@ button {
     position: relative;
     padding: 60px 40px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     overflow: visible;
 }
 
@@ -541,14 +542,16 @@ button {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 0.85rem;
+    font-size: 1.80rem;
     color: var(--dark-grey);
-    margin-bottom: 8px;
+    margin-bottom: 16px;
     text-align: left;
+    width: 100%;
+    max-width: 1100px;
 }
 
 .case-hr {
-    width: 60px;
+    width: 150px;
     height: 2px;
     background: var(--primary-orange);
     display: inline-block;
