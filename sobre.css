@@ -4,67 +4,12 @@
    Seção 1 — Apresentação pessoal
    ============================ */
 #sobre-intro {
-    padding: 60px 24px 50px;
-    max-width: 900px;
+    padding: 70px 24px 80px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    max-width: 1100px;
     margin: 0 auto;
-}
-
-.sobre-intro-content {
-    display: flex;
-    align-items: center;
-    gap: 50px;
-}
-
-.sobre-photo {
-    flex-shrink: 0;
-}
-
-.sobre-photo-placeholder {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary-orange), var(--burned-yellow));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3.5rem;
-    font-weight: 700;
-    color: var(--white);
-    box-shadow: 0 8px 30px rgba(255, 119, 0, 0.25);
-}
-
-/* Se depois adicionar foto real, usar: */
-.sobre-photo img {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-}
-
-.sobre-intro-text h1 {
-    font-size: 2.2rem;
-    color: #BD5902;
-    margin-bottom: 16px;
-    text-align: left;
-}
-
-.sobre-intro-text p {
-    font-size: 1.1rem;
-    color: var(--dark-grey);
-    line-height: 1.7;
-    text-align: left;
-}
-
-.sobre-intro-text strong {
-    color: var(--primary-orange);
-}
-
-.sobre-invite {
-    margin-top: 20px;
-    font-size: 1.2rem !important;
-    font-weight: 600;
-    color: var(--bluh2) !important;
 }
 
 /* ============================
