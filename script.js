@@ -224,6 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const casesData = Array.from(document.querySelectorAll('#cases-data .case-data')).map(el => ({
         phoneBack:  el.dataset.phoneBack,
         phoneFront: el.dataset.phoneFront,
+        backType:   el.dataset.backType || 'phone',
         stat1Val:   el.dataset.stat1Val,
         stat1Lbl:   el.dataset.stat1Lbl,
         stat2Val:   el.dataset.stat2Val,
@@ -241,6 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let isCaseAnimating = false;
 
     const caseSlide      = document.querySelector('.case-slide');
+    const casePhones     = document.querySelector('.case-phones');
     const phoneBack      = document.querySelector('.phone-back');
     const phoneFront     = document.querySelector('.phone-front');
     const statVal1       = document.querySelector('.stat-val-1');
@@ -263,6 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function populateCase(data) {
         phoneBack.src        = data.phoneBack;
         phoneFront.src       = data.phoneFront;
+        casePhones.classList.toggle('notebook-case', data.backType === 'notebook');
         statVal1.textContent = data.stat1Val;
         statLbl1.textContent = data.stat1Lbl;
         statVal2.textContent = data.stat2Val;

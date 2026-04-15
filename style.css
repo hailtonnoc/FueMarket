@@ -459,6 +459,21 @@ button {
     opacity: 0;
 }
 
+.case-phones.notebook-case .phone-back {
+    width: 310px;
+    top: 40px;
+    left: -75px;
+    border-radius: 8px;
+    object-fit: contain;
+}
+
+.case-phones.notebook-case .phone-front {
+    width: 120px;
+    top: 30px;
+    right: 0;
+    transform: rotate(3deg);
+}
+
 .case-stats-card {
     width: 100%;
     background: white;
@@ -1485,4 +1500,3 @@ footer a:hover {
     width: auto;
     object-fit: contain;
     flex-shrink: 0;
-}
