@@ -503,11 +503,12 @@ button {
 }
 
 .stat-val {
-    font-size: 2rem;
+    font-size: clamp(1.1rem, 3.5vw, 2rem);
     font-weight: 700;
     color: var(--dark-blue);
     line-height: 1.1;
     text-align: left;
+    white-space: nowrap;
 }
 
 .stat-lbl {
@@ -1484,9 +1485,4 @@ footer a:hover {
     width: auto;
     object-fit: contain;
     flex-shrink: 0;
-}
-
-@keyframes parceiros-scroll {
-    from { transform: translateX(-50%); }
-    to   { transform: translateX(0); }
 }
