@@ -220,6 +220,44 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 150);
     }
 
+    // --- Serviços Avulsos — auto-collapse on scroll ---
+    const avulsosAccordion = document.getElementById('avulsosAccordion');
+    if (avulsosAccordion) {
+        const avulsoGroups = Array.from(avulsosAccordion.querySelectorAll('.avulso-group'));
+        let avulsosAutoPlayed = false;
+
+        const avulsosObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !avulsosAutoPlayed) {
+                    avulsosAutoPlayed = true;
+                    avulsoGroups.forEach((group, i) => {
+                        setTimeout(() => {
+                            group.classList.add('collapsed');
+                            const btn = group.querySelector('.avulso-group-row');
+                            if (btn) btn.setAttribute('aria-expanded', 'false');
+                            const icon = group.querySelector('.avulso-toggle-icon');
+                            if (icon) icon.textContent = '−';
+                        }, 1400 + i * 550);
+                    });
+                }
+            });
+        }, { threshold: 0.15 });
+
+        avulsosObserver.observe(avulsosAccordion);
+
+        // Manual toggle
+        avulsoGroups.forEach(group => {
+            const btn = group.querySelector('.avulso-group-row');
+            if (!btn) return;
+            btn.addEventListener('click', () => {
+                const isNowCollapsed = group.classList.toggle('collapsed');
+                btn.setAttribute('aria-expanded', String(!isNowCollapsed));
+                const icon = group.querySelector('.avulso-toggle-icon');
+                if (icon) icon.textContent = isNowCollapsed ? '−' : '×';
+            });
+        });
+    }
+
     // --- Cases Slider — dados lidos do HTML (#cases-data) ---
     const casesData = Array.from(document.querySelectorAll('#cases-data .case-data')).map(el => ({
         phoneBack:  el.dataset.phoneBack,
