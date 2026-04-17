@@ -212,6 +212,18 @@
     color: var(--white);
 }
 
+
+
+#feedbacks h2 {
+    margin: 3%;
+    font-weight: 700;
+    color: #ff7700;
+}
+
+#feedbacks img {
+    width: 85%;
+}
+
 @media (max-width: 768px) {
     .pacotes {
         grid-template-columns: 1fr;
@@ -771,4 +783,7 @@
     }
 
     .avulsos-heading h2 {
-  
+        font-size: 1.6rem;
+    }
+}
+
