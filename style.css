@@ -165,16 +165,19 @@ header {
 /* H1 — tag semântica para SEO, visualmente discreta */
 h1 {
     display: block;
+    width: 100%;
     text-align: right;
     font-size: 0.82rem;
     color: #BD5902;
     font-style: italic;
     font-weight: 400;
-    max-width: 800px;
     opacity: 0.5;
     line-height: 1.4;
+    padding: 0 24px;
+    margin: 8px 0 0;
     position: relative;
     z-index: 5;
+    left: -3%;
 }
 
 h2 {
