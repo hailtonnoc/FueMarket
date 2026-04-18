@@ -5,11 +5,70 @@
    ============================ */
 #sobre-intro {
     padding: 70px 24px 80px;
-    display: flex;
-    align-items: center;
-    gap: 40px;
     max-width: 1100px;
     margin: 0 auto;
+}
+
+.sobre-intro-agency {
+    padding: 0 10%;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+#sobre-intro p,
+#sobre-intro h1 {
+    color: var(--dark-blue);
+}
+
+.sobre-tagline {
+    font-size: 1.54rem;
+    color: var(--dark-blue);
+}
+
+#sobre-intro p:not(.sobre-tagline) {
+    font-size: 1rem;
+}
+
+.founder-block {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    width: 100%;
+}
+
+.founder-left {
+    flex-direction: row;
+}
+
+.founder-right {
+    flex-direction: row;
+}
+
+.founder-img-wrap {
+    position: relative;
+    width: 24vw;
+    max-width: 420px;
+    flex-shrink: 0;
+    border-radius: 18px;
+    overflow: hidden;
+    margin-bottom: 2%;
+}
+
+.founder-img-wrap::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    background: linear-gradient(to top, var(--primary-orange) 0%, transparent 55%);
+    pointer-events: none;
+}
+
+.founder-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 18px;
 }
 
 /* ============================
@@ -240,6 +299,99 @@
 }
 
 /* ============================
+   Seção 4 — Modelos de negócio
+   ============================ */
+#sobre-modelos {
+    padding: 70px 0 80px;
+    background-color: #f7f7f7;
+}
+
+#sobre-modelos h2 {
+    font-size: 2rem;
+    color: var(--bluh2);
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.modelos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.modelo-card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    aspect-ratio: 3 / 2.8;
+}
+
+.modelo-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(255, 119, 0, 0.45) 0%, transparent 60%);
+    z-index: 1;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+}
+
+.modelo-card:hover::before {
+    opacity: 0;
+}
+
+.modelo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.modelo-card:hover .modelo-img {
+    transform: scale(1.05);
+}
+
+.modelo-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: rgba(10, 17, 40, 0.72);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 28px;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+.modelo-card:hover .modelo-overlay {
+    opacity: 1;
+}
+
+.modelo-desc {
+    color: var(--white);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    text-align: center;
+    margin: 0;
+}
+
+.modelo-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 14px 20px;
+    color: var(--white);
+    font-size: 1.15rem;
+    font-weight: 700;
+    text-align: center;
+    background: linear-gradient(to top, rgba(10,17,40,0.75) 0%, transparent 100%);
+    margin: 0;
+    z-index: 3;
+}
+
+/* ============================
    Seção 5 — CTA
    ============================ */
 #sobre-cta {
@@ -280,6 +432,25 @@
     .sobre-intro-text h1,
     .sobre-intro-text p {
         text-align: center;
+    }
+
+    .founder-block {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .founder-right {
+        flex-direction: column;
+    }
+
+    .founder-img-wrap {
+        width: 80vw;
+        max-width: 340px;
+    }
+
+    .modelos-grid {
+        grid-template-columns: 1fr;
     }
 
     .mvv-grid {

@@ -393,4 +393,45 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    document.querySelectorAll('.fb-audio-btn').forEach(btn => {
+        const audioId = btn.dataset.audio;
+        const audio = document.getElementById(audioId);
+        if (!audio) return;
+        const progressEl = document.getElementById('progress-' + audioId.split('-')[1]);
+        const timeEl = document.getElementById('time-' + audioId.split('-')[1]);
+        const iconPlay = btn.querySelector('.icon-play');
+        const iconPause = btn.querySelector('.icon-pause');
+
+        btn.addEventListener('click', () => {
+            if (audio.paused) {
+                document.querySelectorAll('audio').forEach(a => { if (a !== audio) a.pause(); });
+                audio.play();
+                iconPlay.style.display = 'none';
+                iconPause.style.display = '';
+            } else {
+                audio.pause();
+                iconPlay.style.display = '';
+                iconPause.style.display = 'none';
+            }
+        });
+
+        audio.addEventListener('timeupdate', () => {
+            if (!audio.duration) return;
+            const pct = (audio.currentTime / audio.duration) * 100;
+            if (progressEl) progressEl.style.width = pct + '%';
+            if (timeEl) {
+                const m = Math.floor(audio.currentTime / 60);
+                const s = Math.floor(audio.currentTime % 60).toString().padStart(2, '0');
+                timeEl.textContent = m + ':' + s;
+            }
+        });
+
+        audio.addEventListener('ended', () => {
+            iconPlay.style.display = '';
+            iconPause.style.display = 'none';
+            if (progressEl) progressEl.style.width = '0%';
+            if (timeEl) timeEl.textContent = '0:00';
+        });
+    });
+
 });

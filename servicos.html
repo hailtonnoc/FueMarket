@@ -660,9 +660,23 @@
         <h2>Feedbacks</h2>
         <div class="feedbacks-grid">
             <div class="feedback-card">
-                <img src="/elementos/img/portfolio/feedback_Ouro.png" alt="feedback ouro chopp" class="feedback-image">
+                <img src="/elementos/img/portfolio/feedback_Ouro.png" alt="Feedback Ouro Chopp" class="feedback-image">
             </div>
-            <div class="feedback-card">
+            <div class="feedback-card feedback-card--audio">
+                <div class="fb-audio-cover">
+                    <img src="/elementos/img/portfolio/feedback_369.png" alt="Feedback 369 Assessoria" class="fb-audio-img">
+                </div>
+                <div class="fb-audio-controls">
+                    <audio id="audio-369" src="elementos/som/portifolio/369depoimento.mp3" preload="metadata"></audio>
+                    <button class="fb-audio-btn" aria-label="Reproduzir depoimento" data-audio="audio-369">
+                        <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" width="36" height="36"><path d="M8 5v14l11-7z"/></svg>
+                        <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" width="36" height="36" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                    </button>
+                    <div class="fb-audio-bar">
+                        <div class="fb-audio-progress" id="progress-369"></div>
+                    </div>
+                    <span class="fb-audio-time" id="time-369">0:00</span>
+                </div>
             </div>
         </div>
     </section>
