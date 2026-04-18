@@ -150,20 +150,31 @@ header {
     transform: translateY(-2px);
 }
 
-/* Título Principal */
-h1 {
+/* Tagline visual — herda estilo do H1 original, visualmente proeminente */
+.seo-tagline {
     display: block;
     font-size: 2.5rem;
     color: #BD5902;
-    /* Cor base do texto principal */
-    margin: 5% auto;
-    /* Espaçamento ajustado para focar no centro */
     max-width: 800px;
     line-height: 1.2;
-    padding: 0 20px;
     position: relative;
     z-index: 5;
-    /* H1 ficará acima dos cards do fundo, mas abaixo dos da frente (via JS) */
+    margin: 20px auto 40px;
+}
+
+/* H1 — tag semântica para SEO, visualmente discreta */
+h1 {
+    display: block;
+    text-align: right;
+    font-size: 0.82rem;
+    color: #BD5902;
+    font-style: italic;
+    font-weight: 400;
+    max-width: 800px;
+    opacity: 0.5;
+    line-height: 1.4;
+    position: relative;
+    z-index: 5;
 }
 
 h2 {
@@ -1500,3 +1511,10 @@ footer a:hover {
     width: auto;
     object-fit: contain;
     flex-shrink: 0;
+
+}
+
+@keyframes parceiros-scroll {
+    from { transform: translateX(-50%); }
+    to   { transform: translateX(0); }
+}

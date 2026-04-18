@@ -17,7 +17,8 @@
 }
 
 #sobre-intro p,
-#sobre-intro h1 {
+#sobre-intro h1,
+#sobre-intro .seo-tagline {
     color: var(--dark-blue);
 }
 
@@ -322,7 +323,7 @@
     position: relative;
     overflow: hidden;
     cursor: pointer;
-    aspect-ratio: 3 / 2.8;
+    aspect-ratio: 3 / 2.24;
 }
 
 .modelo-card::before {
@@ -429,7 +430,7 @@
         text-align: center;
     }
 
-    .sobre-intro-text h1,
+    .sobre-intro-text .seo-tagline,
     .sobre-intro-text p {
         text-align: center;
     }

@@ -354,7 +354,7 @@
     padding: 0 24px;
 }
 
-#srv-intro h1 {
+#srv-intro .seo-tagline {
     font-size: 2.4rem;
     color: #BD5902;
     line-height: 1.25;
