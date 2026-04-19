@@ -1204,13 +1204,6 @@ footer a:hover {
         gap: 20px;
     }
 
-    /* H1 */
-    h1 {
-        font-size: 1.8rem;
-        margin: 10% auto;
-        padding: 0 15px;
-    }
-
     /* Carousel */
     #carousel-section {
         min-height: 250px;
