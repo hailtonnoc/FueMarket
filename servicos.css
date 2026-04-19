@@ -383,7 +383,6 @@
     background: #f9f9f9;
     border-radius: 16px;
     padding: 36px 28px 32px;
-    border-left: 4px solid var(--primary-orange);
     text-align: left;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -656,7 +655,6 @@
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
-    border-top: 4px solid var(--primary-orange);
 }
 
 .srv-case-card:hover {
