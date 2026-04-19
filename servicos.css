@@ -859,10 +859,6 @@
         grid-template-columns: 1fr;
     }
 
-    #srv-intro h1 {
-        font-size: 1.8rem;
-    }
-
     .srv-proof-grid {
         gap: 30px;
     }
