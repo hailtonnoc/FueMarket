@@ -914,7 +914,65 @@ button {
 
 
 #contact {
-    margin-top: 90px;
+    margin-top: 5px;
+}
+
+.homemFue {
+    display: flex;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto 78px;
+    gap: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--white);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
+
+.homemFue img {
+    width: 50%;
+    max-width: 500px;
+    height: 100%;
+    min-height: 300px;
+    object-fit: cover;
+    display: block;
+    flex-shrink: 0;
+}
+
+.homemFue-content {
+    flex: 1;
+    padding: 48px 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 32px;
+}
+
+.homemFue-content p {
+    font-size: 1.1rem;
+    color: var(--dark-grey);
+    line-height: 1.7;
+    margin: 0;
+}
+
+.homemFue-btn {
+    display: inline-block;
+    background-color: #3b2a1a;
+    color: var(--burned-yellow);
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.2s;
+    white-space: nowrap;
+}
+
+.homemFue-btn:hover {
+    background-color: #2a1d10;
+    transform: translateY(-2px);
 }
 
 #contato {
@@ -1390,6 +1448,21 @@ footer a:hover {
 
     .case-arrow-next {
         right: 6px;
+    }
+
+    /* HomemFue */
+    .homemFue {
+        flex-direction: column;
+    }
+
+    .homemFue img {
+        width: 100%;
+        max-width: 100%;
+        min-height: 220px;
+    }
+
+    .homemFue-content {
+        padding: 32px 24px;
     }
 
     /* Contato Links */
