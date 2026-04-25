@@ -7,8 +7,8 @@
     --primary-orange: #FF7700;
     --secondary-orange: #ff77009f;
     --burned-yellow: #FFA705;
-    --dark-blue: #0A1128;
-    --bluh2: #145A75;
+    --dark-blue: #703c16;
+    --bluh2: #703c16;
     --creme: #FEC286;
     --dark-grey: #4D4B4B;
     --white: #FFFFFF;
@@ -240,11 +240,13 @@ h2 {
 /* _________________________________________________*/
 
 .qstFraco {
-    display: inline;
-    background-color: #ff770095;
-    border-radius: 6px;
-    padding: 5px;
-    font-size: 140%;
+    display: inline-block;
+    background-color: #3b2a1a;
+    color: var(--burned-yellow);
+    border-radius: 50px;
+    padding: 10px 24px;
+    font-size: 1.1rem;
+    font-weight: 600;
 }
 
 #suaPersonalidade {
@@ -282,6 +284,23 @@ button {
     padding: 10px 20px;
     font-size: 120%;
     font-weight: 500;
+}
+
+.btn-orcamento {
+    display: inline-block;
+    background-color: #3b2a1a;
+    color: var(--burned-yellow);
+    text-decoration: none;
+    border-radius: 50px;
+    padding: 14px 28px;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-orcamento:hover {
+    background-color: #2a1d10;
+    transform: translateY(-2px);
 }
 
 /*_______________________________________*/
@@ -335,7 +354,7 @@ button {
 /*_______________________________________*/
 
 #issoNaoEObvio {
-    background-color: #4D4B4B;
+    background-color: #1c0a02;
     color: var(--white);
 }
 
