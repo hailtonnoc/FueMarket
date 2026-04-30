@@ -1119,31 +1119,20 @@ footer {
     justify-content: center;
     align-items: flex-start;
     min-height: 350px;
-    padding-top: 80px;
+    padding-top: 0;
 }
 
-/* Arco laranja usando pseudo-elemento */
-.footer-arc-section::before {
-    content: '';
-    position: absolute;
-    bottom: -200px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 500px;
-    height: 540px;
-    border: 3px solid var(--primary-orange);
-    border-radius: 50%;
-    pointer-events: none;
-}
 
 .footer-logo {
-    position: relative;
-    z-index: 2;
+    position: absolute;
+    top: 270px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 4;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100px;
-    margin-top: -10px;
+    height: 150px;
 }
 
 .footer-logo img {
@@ -1151,29 +1140,40 @@ footer {
     object-fit: contain;
 }
 
-.footer-labels {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding-top: 10px;
-    min-width: 180px;
-    z-index: 2;
+/* SVG com texto curvo sobre o arco do footer */
+.footer-circle-svg {
+    position: absolute;
+    bottom: -216px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px;
+    height: 540px;
+    pointer-events: none;
+    z-index: 3;
+    overflow: visible;
 }
 
-.footer-labels span {
-    font-size: 1.1rem;
-    color: var(--white);
-    font-weight: 400;
+.footer-circle-svg text {
+    fill: var(--primary-orange);
+    font-size: 14px;
+    font-family: 'libre franklin', 'inter', 'Lato', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+    transition: fill 0.25s, font-size 0.25s;
 }
 
-.footer-labels-left {
-    text-align: left;
-    margin-right: 40px;
+.fcs-link {
+    pointer-events: all;
+    cursor: pointer;
 }
 
-.footer-labels-right {
-    text-align: right;
-    margin-left: 40px;
+.fcs-link:hover text {
+    fill: var(--white);
+    font-size: 16px;
+}
+
+.footer-services-mobile {
+    display: none;
 }
 
 footer a {
@@ -1540,17 +1540,39 @@ footer a:hover {
         min-height: 380px;
     }
 
-    .footer-arc-section::before {
-        width: 150vw;
-        height: 100vw;
-        bottom: -40vw;
-        border-width: 2px;
+    .footer-logo {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
     }
 
-    .footer-labels {
-        text-align: center !important;
-        margin: 0 !important;
-        width: 100%;
+
+    /* Footer — texto curvo oculto no mobile, fallback linear visível */
+    .footer-circle-svg {
+        display: none;
+    }
+
+    .footer-services-mobile {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px 18px;
+        padding: 8px 16px 0;
+        pointer-events: all;
+    }
+
+    .footer-services-mobile a {
+        color: var(--primary-orange);
+        font-size: 0.9rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: opacity 0.2s;
+    }
+
+    .footer-services-mobile a:hover {
+        opacity: 0.7;
+        text-decoration: underline;
     }
 }
 
