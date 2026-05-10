@@ -435,3 +435,35 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+
+// === WhatsApp Floating Button ===
+(function () {
+    const btn = document.getElementById('wppFloat');
+    if (!btn) return;
+
+    let initialWindowOpen = true;
+
+    btn.classList.add('expanded');
+    setTimeout(function () {
+        initialWindowOpen = false;
+        if (!btn.dataset.contactActive) {
+            btn.classList.remove('expanded');
+        }
+    }, 3000);
+
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+        const contactObserver = new IntersectionObserver(function (entries) {
+            if (entries[0].isIntersecting) {
+                btn.dataset.contactActive = '1';
+                btn.classList.add('expanded');
+            } else {
+                delete btn.dataset.contactActive;
+                if (!initialWindowOpen) {
+                    btn.classList.remove('expanded');
+                }
+            }
+        }, { threshold: 0.1 });
+        contactObserver.observe(contactSection);
+    }
+})();
