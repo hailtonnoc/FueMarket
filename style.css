@@ -1655,6 +1655,7 @@ footer a:hover {
     gap: 80px;
     width: max-content;
     animation: parceiros-scroll 20s linear infinite;
+    will-change: transform;
 }
 
 .parceiros-track img {
@@ -1666,8 +1667,8 @@ footer a:hover {
 }
 
 @keyframes parceiros-scroll {
-    from { transform: translateX(-50%); }
-    to   { transform: translateX(0); }
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
 }
 
 /* === WhatsApp Floating Button === */

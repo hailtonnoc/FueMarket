@@ -1,14 +1,36 @@
 document.addEventListener('DOMContentLoaded', () => {
     // --- Animação Parceiros Track ---
+    // Faixa infinita: duplicamos o conjunto original uma única vez (o CSS anda
+    // de translateX(0) até translateX(-50%)), então basta adicionar/remover
+    // <img> no HTML — nada aqui precisa ser tocado ao mudar os parceiros.
     const parceirosTrack = document.querySelector('.parceiros-track');
     if (parceirosTrack) {
-        const parceirosImages = parceirosTrack.querySelectorAll('img');
-        const numParceiros = parceirosImages.length;
-        const baseDuration = 20; // tempo original em segundos
-        const baseImageCount = 10; // quantidade original de imagens
-        const adjustedDuration = (numParceiros / baseImageCount) * baseDuration;
-        
-        parceirosTrack.style.animationDuration = adjustedDuration + 's';
+        const originalImages = Array.from(parceirosTrack.children);
+        originalImages.forEach(img => {
+            const clone = img.cloneNode(true);
+            clone.setAttribute('aria-hidden', 'true');
+            parceirosTrack.appendChild(clone);
+        });
+
+        const PIXELS_PER_SECOND = 60;
+
+        function setParceirosDuration() {
+            const setWidth = parceirosTrack.scrollWidth / 2;
+            const duration = setWidth / PIXELS_PER_SECOND;
+            parceirosTrack.style.animationDuration = duration + 's';
+        }
+
+        const parceirosImgEls = parceirosTrack.querySelectorAll('img');
+        const loadPromises = Array.from(parceirosImgEls).map(img => {
+            if (img.complete) return Promise.resolve();
+            return new Promise(resolve => {
+                img.addEventListener('load', resolve, { once: true });
+                img.addEventListener('error', resolve, { once: true });
+            });
+        });
+
+        Promise.all(loadPromises).then(setParceirosDuration);
+        window.addEventListener('resize', setParceirosDuration);
     }
 
     const carouselContainer = document.querySelector('.carousel-container');
