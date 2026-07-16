@@ -1,4 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // --- Animação Parceiros Track ---
+    const parceirosTrack = document.querySelector('.parceiros-track');
+    if (parceirosTrack) {
+        const parceirosImages = parceirosTrack.querySelectorAll('img');
+        const numParceiros = parceirosImages.length;
+        const baseDuration = 20; // tempo original em segundos
+        const baseImageCount = 10; // quantidade original de imagens
+        const adjustedDuration = (numParceiros / baseImageCount) * baseDuration;
+        
+        parceirosTrack.style.animationDuration = adjustedDuration + 's';
+    }
+
     const carouselContainer = document.querySelector('.carousel-container');
     const carouselItems = document.querySelectorAll('.carousel-item');
     const numItems = carouselItems.length;
